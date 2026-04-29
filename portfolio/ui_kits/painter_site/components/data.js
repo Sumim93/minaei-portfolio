@@ -2,6 +2,29 @@
 // Artist: Somaye Minaei · signed "S. Minaei"
 const PAINTINGS = [
   {
+    slug: "daisies-in-glass",
+    number: 9,
+    title: "Three Daisies in Glass",
+    year: 2024,
+    medium: "Oil on linen",
+    dimensions: "16 × 10 in.",
+    subject: "Still Life",
+    series: "Pigment Studies",
+    image: "assets/paintings/daisies.JPG",
+    hero:  "assets/paintings-hero/daisies.jpg",
+    thumb: "assets/paintings-thumb/daisies.jpg",
+    detail: "assets/paintings/daisies.JPG",
+    square: "assets/paintings/daisies.JPG",
+    available: false,
+    note: "Three stems, one small bottle. I painted this in a single afternoon — the glass was the true subject. The way it bends the stems underwater, holds a pocket of light at the base, turns the green of the stalks slightly grey. The background is almost the same teal as the bottle; I wanted the daisies to feel like the only bright thing in a quiet room.",
+    progress: [
+      "Teal ground — laid flat and left to dry",
+      "Glass bottle first — the transparency built up in thin layers",
+      "Stems painted through the glass, slightly shifted and greyed",
+      "Daisies last — white over white, each petal shaped with a single stroke",
+    ],
+  },
+  {
     slug: "statue",
     number: 8,
     title: "Statue",

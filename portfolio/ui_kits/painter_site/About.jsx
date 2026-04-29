@@ -53,25 +53,24 @@ const About = () => (
       </div>
     </section>
 
-    {/* Photo gallery — placeholder until artist photos arrive */}
+    {/* Now in the works */}
     <section style={{ padding: "96px 48px", background: "var(--paper-0)", borderTop: "1px solid var(--border-soft)" }}>
-      <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 36, textAlign: "center" }}>In the studio</div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 20, maxWidth: 1400, margin: "0 auto" }}>
-        <div style={{ gridColumn: "1 / 4", aspectRatio: "3/4" }}>
-          <div style={{ width: "100%", height: "100%", background: `url(../../assets/textures/paper-warm.jpg) center/cover, var(--paper-3)`, boxShadow: "var(--shadow-2)", display: "flex", alignItems: "end", padding: 20, color: "var(--ink-2)", fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 15 }}>
-            Studio portrait — placeholder
-          </div>
-        </div>
-        <div style={{ gridColumn: "4 / 7", display: "grid", gridTemplateRows: "1fr 1fr", gap: 20 }}>
-          <div style={{ background: `url(assets/paintings/candle-veil.jpg) center/cover`, boxShadow: "var(--shadow-2)" }}></div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-            <div style={{ background: `url(../../assets/textures/canvas-light.jpg) center/cover, var(--paper-2)`, boxShadow: "var(--shadow-2)" }}></div>
-            <div style={{ background: `url(../../assets/textures/wash-moody.jpg) center/cover`, boxShadow: "var(--shadow-2)" }}></div>
-          </div>
-        </div>
+      <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 16, textAlign: "center" }}>In the studio</div>
+      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 20, color: "var(--ink-2)", textAlign: "center", marginBottom: 48 }}>
+        Now in the works — details from a portrait in progress.
       </div>
-      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 15, color: "var(--fg-muted)", textAlign: "center", marginTop: 28 }}>
-        Studio photographs to come.
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, maxWidth: 1400, margin: "0 auto" }}>
+        {[1, 2, 3, 4].map(n => (
+          <div key={n} style={{ aspectRatio: "1/1", overflow: "hidden", boxShadow: "var(--shadow-2)" }}>
+            <img
+              src={`assets/studio/studio-${n}.jpg`}
+              alt=""
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.6s ease" }}
+              onMouseOver={e => e.currentTarget.style.transform = "scale(1.04)"}
+              onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}
+            />
+          </div>
+        ))}
       </div>
     </section>
   </div>

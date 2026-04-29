@@ -255,35 +255,19 @@ const Home = ({ onNavigate }) => {
         background: "var(--dark-1)", color: "var(--dark-on-1)",
         padding: "96px 48px", borderTop: "1px solid rgba(240,230,210,0.12)",
       }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr 1fr", gap: 64, alignItems: "center" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "center" }}>
           <div style={{
-            fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
-            textTransform: "uppercase", color: "var(--pigment-ochre)",
-          }}>V. Colophon</div>
-
-          <div style={{ textAlign: "center" }}>
-            <div style={{
-              fontFamily: "var(--font-display)", fontSize: 38, fontStyle: "italic",
-              fontWeight: 300, color: "var(--dark-on-1)", letterSpacing: "-0.02em",
-            }}>Write to me.</div>
-            <p style={{
-              fontFamily: "'Cormorant Garamond', serif", fontSize: 19, fontStyle: "italic",
-              color: "var(--dark-on-2)", marginTop: 16, maxWidth: 520, marginLeft: "auto", marginRight: "auto",
-            }}>
-              For commissions, studio visits, or a slow reply about painting.
-            </p>
-            <div style={{ marginTop: 32 }}>
-              <Button variant="onDark" onClick={() => onNavigate("contact")}>Open the note</Button>
-            </div>
-          </div>
-
-          <div style={{
-            fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.28em",
-            textTransform: "uppercase", color: "rgba(240,230,210,0.5)", textAlign: "right",
+            fontFamily: "var(--font-display)", fontSize: 38, fontStyle: "italic",
+            fontWeight: 300, color: "var(--dark-on-1)", letterSpacing: "-0.02em",
+          }}>Write to me.</div>
+          <p style={{
+            fontFamily: "'Cormorant Garamond', serif", fontSize: 19, fontStyle: "italic",
+            color: "var(--dark-on-2)", marginTop: 16, maxWidth: 520, marginLeft: "auto", marginRight: "auto",
           }}>
-            Set in Fraunces<br/>
-            & Cormorant Garamond<br/>
-            Printed slowly
+            For commissions, studio visits, or a slow reply about painting.
+          </p>
+          <div style={{ marginTop: 32 }}>
+            <Button variant="onDark" onClick={() => onNavigate("contact")}>Open the note</Button>
           </div>
         </div>
       </section>

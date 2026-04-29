@@ -13,13 +13,17 @@ const Footer = ({ onNavigate }) => {
       color: "var(--ink-2)",
     }}>
       <div>
-        <div style={{
-          fontFamily: "var(--font-display)",
-          fontSize: 32,
-          fontWeight: 300,
-          letterSpacing: "-0.02em",
-          color: "var(--ink-1)",
-        }}>Sumim</div>
+        <div
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: 32,
+            fontWeight: 300,
+            letterSpacing: "-0.02em",
+            color: "var(--ink-1)",
+            cursor: "pointer",
+            display: "inline-block",
+          }}>Sumim</div>
         <p style={{
           fontFamily: "var(--font-body)",
           fontStyle: "italic",

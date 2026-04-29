@@ -52,16 +52,6 @@ const PaintingCard = ({ painting, onClick, size = "md", showTags = true }) => {
         }}>
           {p.year} · {p.medium} · {p.dimensions}
         </div>
-        {showTags && p.available !== undefined && (
-          <div style={{ marginTop: 6 }}>
-            <span style={{
-              fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.18em",
-              textTransform: "uppercase", color: p.available ? "var(--pigment-sienna)" : "var(--fg-subtle)",
-              border: `1px solid ${p.available ? "var(--pigment-sienna)" : "var(--border)"}`,
-              padding: "4px 10px", borderRadius: 999,
-            }}>{p.available ? "Available" : "Private collection"}</span>
-          </div>
-        )}
       </div>
     </article>
   );

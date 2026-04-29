@@ -37,8 +37,6 @@ const PaintingDetail = ({ painting, onNavigate }) => {
               ["Support", "Belgian linen on stretcher"],
               ["Dimensions", p.dimensions],
               ["Series", p.series],
-              ["Status", p.available ? "Available" : "Private collection"],
-              ...(p.available ? [["Price", p.price]] : []),
             ].map(([k, v]) => (
               <React.Fragment key={k}>
                 <dt style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--fg-muted)", margin: 0 }}>{k}</dt>
@@ -47,12 +45,9 @@ const PaintingDetail = ({ painting, onNavigate }) => {
             ))}
           </dl>
 
-          {p.available && (
-            <div style={{ marginTop: 36, display: "flex", gap: 16 }}>
-              <Button variant="primary" onClick={() => onNavigate("contact", p)}>Inquire</Button>
-              <Button variant="ghost" onClick={() => setZoomed(true)}>View details ↗</Button>
-            </div>
-          )}
+          <div style={{ marginTop: 36 }}>
+            <Button variant="ghost" onClick={() => setZoomed(true)}>View full painting ↗</Button>
+          </div>
         </div>
       </section>
 

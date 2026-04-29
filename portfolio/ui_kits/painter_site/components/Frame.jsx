@@ -11,7 +11,6 @@ const Frame = ({ src, alt = "", ratio, matted = true, onClick, children }) => (
       display: "inline-block",
       width: "100%",
       boxSizing: "border-box",
-      overflow: "hidden",
     }}
     onMouseEnter={e => {
       if (!onClick) return;
@@ -25,13 +24,15 @@ const Frame = ({ src, alt = "", ratio, matted = true, onClick, children }) => (
     }}
   >
     {src && (
-      <img src={src} alt={alt} style={{
-        width: "100%",
-        display: "block",
-        aspectRatio: ratio || undefined,
-        objectFit: "cover",
-        transition: "transform 0.8s cubic-bezier(0.2,0.8,0.2,1)",
-      }}/>
+      <div style={{ overflow: "hidden", display: "block", width: "100%" }}>
+        <img src={src} alt={alt} style={{
+          width: "100%",
+          display: "block",
+          aspectRatio: ratio || undefined,
+          objectFit: "cover",
+          transition: "transform 0.8s cubic-bezier(0.2,0.8,0.2,1)",
+        }}/>
+      </div>
     )}
     {children}
   </figure>

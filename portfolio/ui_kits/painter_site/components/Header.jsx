@@ -27,7 +27,7 @@ const Header = ({ current = "works", onNavigate, variant = "light" }) => {
         color: "inherit",
         textDecoration: "none",
         fontVariationSettings: '"opsz" 144, "SOFT" 100',
-      }}>Minaei</a>
+      }}>Sumim</a>
 
       <nav style={{ display: "flex", gap: 36 }}>
         {items.map(it => (
@@ -60,7 +60,7 @@ const Header = ({ current = "works", onNavigate, variant = "light" }) => {
         color: "inherit",
         opacity: 0.6,
       }}>
-        № Studio · North-facing
+        Art by Sumi
       </div>
     </header>
   );

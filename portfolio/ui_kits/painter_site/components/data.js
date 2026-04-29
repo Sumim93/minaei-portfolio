@@ -30,7 +30,7 @@ const PAINTINGS = [
     title: "Statue",
     year: 2024,
     medium: "Oil on linen",
-    dimensions: "— × — in.",
+    dimensions: "14 × 18 in.",
     subject: "Portrait Studies",
     series: "Portraits",
     image: "assets/paintings/statue.jpg",
@@ -39,7 +39,13 @@ const PAINTINGS = [
     detail: "assets/paintings/statue.jpg",
     square: "assets/paintings/statue.jpg",
     available: false,
-    note: "",
+    note: "A study after a plaster cast. I wanted to paint a face that would not move — no breath, no shifting weight, no patience to test. The stillness changed the way I worked. Without a sitter, the only thing left to look at was the form itself: how light folded into the cheekbone, how the shadow under the brow held its own quiet weight. I painted this slowly, over a week of mornings, in cool light.",
+    progress: [
+      "Cool grey ground — ivory black and titanium white",
+      "Mass of the head blocked in with raw umber",
+      "Half-tones built up in cool greys and warm whites",
+      "Final shadows kept transparent — a single glaze of umber",
+    ],
   },
   {
     slug: "candle-veil",

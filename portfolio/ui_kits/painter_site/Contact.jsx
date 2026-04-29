@@ -11,7 +11,7 @@ const Contact = ({ prefill }) => {
         <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 5vw, 4.5rem)", fontWeight: 300, letterSpacing: "-0.03em", margin: 0, lineHeight: 1.05 }}>
           For commissions, studio visits,<br/><em style={{ fontWeight: 300 }}>or a slow reply about painting.</em>
         </h1>
-        <p style={{ fontFamily: "'Lora', serif", fontSize: isMobile ? 18 : 21, fontStyle: "italic", lineHeight: 1.55, color: "var(--ink-2)", marginTop: 28, maxWidth: 600 }}>
+        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: isMobile ? 18 : 21, fontStyle: "italic", lineHeight: 1.55, color: "var(--ink-2)", marginTop: 28, maxWidth: 600 }}>
           I read everything that arrives, and I reply within a week — usually less. Tell me what you're looking at, and what you'd like to know.
         </p>
       </section>
@@ -21,7 +21,7 @@ const Contact = ({ prefill }) => {
           <div style={{ padding: isMobile ? "48px 24px" : "64px 48px", background: "var(--paper-2)", textAlign: "center" }}>
             <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--pigment-sienna)", marginBottom: 16 }}>Thank you</div>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: 40, fontStyle: "italic", fontWeight: 300, margin: 0, color: "var(--ink-1)" }}>Your note is on its way.</h2>
-            <p style={{ fontFamily: "'Lora', serif", fontSize: 18, fontStyle: "italic", color: "var(--fg-muted)", marginTop: 16 }}>I'll write back soon — likely after Wednesday, after the October sitting ends.</p>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontStyle: "italic", color: "var(--fg-muted)", marginTop: 16 }}>I'll write back soon — likely after Wednesday, after the October sitting ends.</p>
           </div>
         ) : (
           <form onSubmit={e => { e.preventDefault(); setSent(true); }} style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 28 }}>
@@ -35,7 +35,7 @@ const Contact = ({ prefill }) => {
             <FieldArea k="note" label="Your note" placeholder="Tell me what you're looking at." style={{ gridColumn: "1/-1" }}/>
 
             <div style={{ gridColumn: "1/-1", display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? 20 : 0, marginTop: 16, borderTop: "1px solid var(--border-soft)", paddingTop: 24 }}>
-              <div style={{ fontFamily: "'Lora', serif", fontStyle: "italic", fontSize: 15, color: "var(--fg-muted)" }}>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 15, color: "var(--fg-muted)" }}>
                 Or, write directly — <a href="mailto:s.minaei1993@gmail.com" style={{ color: "var(--pigment-umber)" }}>s.minaei1993@gmail.com</a>
               </div>
               <Button variant="primary" onClick={() => {}}>Send the note</Button>
@@ -142,7 +142,7 @@ const Series = ({ onNavigate }) => {
               <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 3.8rem)", fontWeight: 300, fontStyle: "italic", margin: "0 0 16px", letterSpacing: "-0.025em" }}>
                 {s.title}
               </h2>
-              <p style={{ fontFamily: "'Lora', serif", fontSize: isMobile ? 17 : 20, fontStyle: "italic", lineHeight: 1.6, color: "var(--ink-2)", margin: 0, maxWidth: 680 }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: isMobile ? 17 : 20, fontStyle: "italic", lineHeight: 1.6, color: "var(--ink-2)", margin: 0, maxWidth: 680 }}>
                 {s.description}
               </p>
             </div>

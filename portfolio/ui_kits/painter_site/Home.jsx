@@ -10,7 +10,7 @@ const Home = ({ onNavigate }) => {
         padding: "0 0 0", position: "relative", minHeight: "92vh",
         display: "grid", gridTemplateColumns: "1fr",
         backgroundColor: "var(--dark-1)",
-        backgroundImage: `url(${hero.image})`,
+        backgroundImage: `url(${hero.hero || hero.image})`,
         backgroundSize: "cover", backgroundPosition: "center 18%",
         overflow: "hidden",
       }}>
@@ -185,7 +185,7 @@ const Home = ({ onNavigate }) => {
         return (
           <section style={{ background: "var(--dark-2)", color: "var(--dark-on-1)", padding: "120px 48px" }}>
             <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
-              <img src={noted.image} alt={noted.title} style={{ width: "100%", boxShadow: "0 40px 80px -20px rgba(0,0,0,0.6)" }}/>
+              <img src={noted.hero || noted.image} alt={noted.title} style={{ width: "100%", boxShadow: "0 40px 80px -20px rgba(0,0,0,0.6)" }}/>
               <div>
                 <div style={{
                   fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",

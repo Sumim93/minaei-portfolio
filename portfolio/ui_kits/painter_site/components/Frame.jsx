@@ -1,23 +1,5 @@
 // Frame.jsx — painting shown with matted frame shadow
-const Frame = ({ src, alt = "", ratio, matted = true, onClick, children }) => {
-  const handleMouseMove = (e) => {
-    if (!onClick) return;
-    const el = e.currentTarget;
-    const rect = el.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;   // -0.5 → 0.5
-    const y = (e.clientY - rect.top)  / rect.height - 0.5;
-    el.style.transition = "transform 0.12s ease-out";
-    el.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
-  };
-
-  const handleMouseLeave = (e) => {
-    if (!onClick) return;
-    const el = e.currentTarget;
-    el.style.transition = "transform 0.6s cubic-bezier(0.2,0.8,0.2,1)";
-    el.style.transform = "translate(0px, 0px)";
-  };
-
-  return (
+const Frame = ({ src, alt = "", ratio, matted = true, onClick, children }) => (
   <figure
     onClick={onClick}
     style={{
@@ -26,14 +8,21 @@ const Frame = ({ src, alt = "", ratio, matted = true, onClick, children }) => {
       padding: matted ? "14px 14px 18px" : 0,
       boxShadow: matted ? "var(--shadow-frame)" : "none",
       cursor: onClick ? "zoom-in" : "default",
-      transition: "transform 0.6s cubic-bezier(0.2,0.8,0.2,1)",
       display: "inline-block",
       width: "100%",
       boxSizing: "border-box",
-      willChange: "transform",
+      overflow: "hidden",
     }}
-    onMouseMove={handleMouseMove}
-    onMouseLeave={handleMouseLeave}
+    onMouseEnter={e => {
+      if (!onClick) return;
+      const img = e.currentTarget.querySelector("img");
+      if (img) img.style.transform = "scale(1.06)";
+    }}
+    onMouseLeave={e => {
+      if (!onClick) return;
+      const img = e.currentTarget.querySelector("img");
+      if (img) img.style.transform = "scale(1)";
+    }}
   >
     {src && (
       <img src={src} alt={alt} style={{
@@ -41,12 +30,12 @@ const Frame = ({ src, alt = "", ratio, matted = true, onClick, children }) => {
         display: "block",
         aspectRatio: ratio || undefined,
         objectFit: "cover",
+        transition: "transform 0.8s cubic-bezier(0.2,0.8,0.2,1)",
       }}/>
     )}
     {children}
   </figure>
-  );
-};
+);
 
 // PaintingCard — frame + caption block, editorial style
 const PaintingCard = ({ painting, onClick, size = "md", showTags = true }) => {

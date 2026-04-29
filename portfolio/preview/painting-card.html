@@ -1,0 +1,28 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>html,body{margin:0;padding:0;background:var(--paper-1);}
+.card{padding:24px 26px;display:grid;grid-template-columns:220px 1fr;gap:22px;align-items:center;}
+.frame{background:var(--paper-0);padding:14px 14px 18px;box-shadow:var(--shadow-frame);}
+.frame img{width:100%;display:block;filter:saturate(.95);}
+.caption{font-family:var(--font-body);font-size:12px;font-style:italic;color:var(--fg-muted);margin-top:10px;line-height:1.4;}
+.meta{display:flex;flex-direction:column;gap:6px;}
+.eye{font-family:var(--font-ui);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-muted);}
+.title{font-family:var(--font-display);font-size:26px;line-height:1.1;font-style:italic;font-weight:400;color:var(--ink-1);}
+.tech{font-family:var(--font-body);font-size:14px;color:var(--fg-muted);font-style:italic;}
+.tags{display:flex;gap:8px;margin-top:6px;}
+.tag{font-family:var(--font-ui);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--border);padding:4px 10px;border-radius:999px;}
+</style></head>
+<body><div class="card">
+  <div class="frame">
+    <img src="../assets/paintings/portrait-01-thumb.png" alt="">
+    <div class="caption">Bust with Veil, 2024</div>
+  </div>
+  <div class="meta">
+    <div class="eye">№ 07 · Portrait Studies</div>
+    <div class="title">Bust with Veil</div>
+    <div class="tech">2024 · Oil on linen · 18 × 24 in.</div>
+    <div class="tags"><span class="tag">Portrait</span><span class="tag">Grisaille</span><span class="tag">Available</span></div>
+  </div>
+</div></body></html>

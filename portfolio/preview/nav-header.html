@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>html,body{margin:0;padding:0;background:var(--paper-1);}
+.card{padding:16px 26px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-soft);}
+.brand{font-family:var(--font-display);font-size:28px;font-weight:300;letter-spacing:-0.02em;color:var(--ink-1);}
+.brand i{font-style:italic;}
+nav{display:flex;gap:30px;}
+nav a{font-family:var(--font-ui);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2);text-decoration:none;}
+nav a.current{color:var(--ink-1);position:relative;}
+nav a.current::after{content:"";position:absolute;left:-4px;right:-4px;bottom:-6px;height:1px;background:var(--ink-1);}
+.right{font-family:var(--font-ui);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2);}
+</style></head>
+<body><div class="card">
+  <div class="brand">Minaci</div>
+  <nav>
+    <a href="#">Works</a>
+    <a href="#" class="current">Series</a>
+    <a href="#">About</a>
+    <a href="#">Commissions</a>
+    <a href="#">Contact</a>
+  </nav>
+  <div class="right">№ Studio · Brooklyn</div>
+</div></body></html>

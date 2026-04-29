@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/ui_kits/painter_site/index.html" }
+  ]
+}

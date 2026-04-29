@@ -1,0 +1,21 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--paper-1);}
+  .card{padding:22px 26px;display:grid;grid-template-columns:repeat(7,1fr);gap:12px;min-height:130px;}
+  .chip{display:flex;flex-direction:column;gap:6px;}
+  .chip .c{height:70px;border:1px solid var(--border-soft);}
+  .chip .n{font-family:var(--font-ui);font-size:10px;letter-spacing:.06em;color:var(--fg-muted);text-transform:uppercase;}
+  .chip .v{font-family:var(--font-ui);font-size:9.5px;color:var(--fg-subtle);}
+</style></head>
+<body><div class="card">
+  <div class="chip"><div class="c" style="background:var(--pigment-ochre)"></div><div class="n">Ochre</div><div class="v">#c9a961</div></div>
+  <div class="chip"><div class="c" style="background:var(--pigment-sienna)"></div><div class="n">Sienna</div><div class="v">#7d3c2a</div></div>
+  <div class="chip"><div class="c" style="background:var(--pigment-umber)"></div><div class="n">Umber</div><div class="v">#4a3424</div></div>
+  <div class="chip"><div class="c" style="background:var(--pigment-lapis)"></div><div class="n">Lapis</div><div class="v">#2f4858</div></div>
+  <div class="chip"><div class="c" style="background:var(--pigment-sage)"></div><div class="n">Sage</div><div class="v">#5a6b52</div></div>
+  <div class="chip"><div class="c" style="background:var(--pigment-rose)"></div><div class="n">Rose</div><div class="v">#a8635a</div></div>
+  <div class="chip"><div class="c" style="background:var(--pigment-alabaster)"></div><div class="n">Alabaster</div><div class="v">#e8dfcc</div></div>
+</div></body></html>

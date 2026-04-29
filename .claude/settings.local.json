@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh auth *)",
+      "Bash(git --version)",
+      "Bash(npm --version)",
+      "PowerShell(gh --version 2>&1)",
+      "PowerShell(node --version 2>&1)",
+      "PowerShell(vercel --version 2>&1)"
+    ]
+  }
+}

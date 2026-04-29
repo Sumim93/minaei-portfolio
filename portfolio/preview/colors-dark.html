@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--paper-1);}
+  .card{padding:22px 26px;display:flex;gap:16px;min-height:110px;}
+  .big{flex:1;background:var(--dark-1);height:140px;display:flex;align-items:center;justify-content:center;color:var(--dark-on-1);font-family:var(--font-display);font-size:28px;font-style:italic;font-weight:300;}
+  .list{flex:1;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+  .chip{display:flex;flex-direction:column;gap:6px;}
+  .chip .c{height:40px;border:1px solid var(--border-soft);}
+  .chip .n{font-family:var(--font-ui);font-size:10px;letter-spacing:.08em;color:var(--fg-muted);text-transform:uppercase;}
+  .chip .v{font-family:var(--font-ui);font-size:10px;color:var(--fg-subtle);}
+</style></head>
+<body><div class="card">
+  <div class="big">after hours.</div>
+  <div class="list">
+    <div class="chip"><div class="c" style="background:var(--dark-1)"></div><div class="n">dark-1</div><div class="v">#14110d</div></div>
+    <div class="chip"><div class="c" style="background:var(--dark-2)"></div><div class="n">dark-2</div><div class="v">#1f1a14</div></div>
+    <div class="chip"><div class="c" style="background:var(--dark-3)"></div><div class="n">dark-3</div><div class="v">#2a241c</div></div>
+    <div class="chip"><div class="c" style="background:var(--dark-on-1)"></div><div class="n">on-1</div><div class="v">#f0e6d2</div></div>
+  </div>
+</div></body></html>

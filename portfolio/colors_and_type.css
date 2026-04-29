@@ -1,0 +1,252 @@
+/* =========================================================================
+   Painter Portfolio — Color & Type Foundations
+   Romantic / painterly — soft washes, ornamental serifs, moody
+   ========================================================================= */
+
+/* -- Fonts ---------------------------------------------------------------- */
+/* Loaded via Google Fonts in the HTML <head>:
+   - Cormorant Garamond (display serif, ornamental)
+   - Fraunces (editorial serif with optical sizes)
+   - Inter (UI sans, tiny text only)
+   - Caveat (handwritten signature accent, sparingly)
+*/
+
+:root {
+  /* ── Ink (foreground) ───────────────────────────────────────────── */
+  --ink-1: #1a1612;         /* near-black, warm. titles, heavy text. */
+  --ink-2: #3a2f25;         /* dark umber. body. */
+  --ink-3: #6b5b4a;         /* raw-umber grey. secondary. */
+  --ink-4: #9c8d7a;         /* soft taupe. tertiary, captions. */
+  --ink-5: #bfb29e;         /* fog. borders, dividers. */
+
+  /* ── Paper (backgrounds) ───────────────────────────────────────── */
+  --paper-0: #fdfbf6;       /* crisp linen — lightest, cooler white. */
+  --paper-1: #f6f1e6;       /* soft cream — default page, less yellow. */
+  --paper-2: #ede5d3;       /* kraft-light — cards, raised. */
+  --paper-3: #dfd4bd;       /* aged paper — sections. */
+  --paper-4: #ccbea4;       /* deep cream — accents. */
+
+  /* ── Pigments (accent/brand colors, drawn from oil palette) ────── */
+  --pigment-ochre:     #c9a961;   /* yellow ochre */
+  --pigment-sienna:    #7d3c2a;   /* burnt sienna */
+  --pigment-umber:     #4a3424;   /* raw umber */
+  --pigment-lapis:     #2f4858;   /* muted prussian blue */
+  --pigment-sage:      #5a6b52;   /* olive-sage */
+  --pigment-rose:      #a8635a;   /* rose madder, softened */
+  --pigment-alabaster: #e8dfcc;   /* statuary off-white */
+
+  /* ── Dark (moody mode, hero sections) ──────────────────────────── */
+  --dark-1: #14110d;
+  --dark-2: #1f1a14;
+  --dark-3: #2a241c;
+  --dark-on-1: #f0e6d2;
+  --dark-on-2: #c9b99a;
+
+  /* ── Semantic (apply these in components, not raw tokens) ──────── */
+  --fg: var(--ink-2);
+  --fg-strong: var(--ink-1);
+  --fg-muted: var(--ink-3);
+  --fg-subtle: var(--ink-4);
+  --bg: var(--paper-1);
+  --bg-raised: var(--paper-0);
+  --bg-sunken: var(--paper-2);
+  --border: var(--ink-5);
+  --border-soft: color-mix(in oklch, var(--ink-5) 50%, transparent);
+  --accent: var(--pigment-sienna);
+  --accent-soft: var(--pigment-rose);
+  --link: var(--pigment-umber);
+  --link-hover: var(--pigment-sienna);
+
+  /* ── Type scale (editorial, with optical sizing in mind) ───────── */
+  --font-display: 'Fraunces', 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-serif:   'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --font-body:    'Fraunces', 'Cormorant Garamond', Georgia, serif;
+  --font-ui:      'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-hand:    'Caveat', 'Homemade Apple', cursive;
+
+  /* Weights */
+  --w-light: 300;
+  --w-regular: 400;
+  --w-medium: 500;
+  --w-semibold: 600;
+
+  /* Fluid type — editorial feels big */
+  --fs-hero:   clamp(3.5rem, 9vw, 8rem);     /* 56–128px */
+  --fs-h1:     clamp(2.5rem, 5vw, 4.5rem);   /* 40–72px */
+  --fs-h2:     clamp(2rem, 3.5vw, 3rem);     /* 32–48px */
+  --fs-h3:     clamp(1.5rem, 2.2vw, 2rem);   /* 24–32px */
+  --fs-h4:     1.375rem;                      /* 22px */
+  --fs-lead:   1.25rem;                       /* 20px */
+  --fs-body:   1.0625rem;                     /* 17px */
+  --fs-small:  0.9375rem;                     /* 15px */
+  --fs-caption:0.8125rem;                     /* 13px */
+  --fs-micro:  0.6875rem;                     /* 11px — UI labels */
+
+  /* Line heights */
+  --lh-display: 1.02;
+  --lh-heading: 1.12;
+  --lh-body: 1.55;
+  --lh-tight: 1.25;
+
+  /* Letter spacing — serifs are generous; labels are tracked out */
+  --ls-display: -0.02em;
+  --ls-body: 0;
+  --ls-label: 0.16em;       /* small-caps style labels */
+  --ls-micro: 0.24em;
+
+  /* ── Spacing (8-point, with an editorial 12 bump) ──────────────── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+  --sp-10: 128px;
+  --sp-11: 192px;
+
+  /* ── Radii — almost none; art lives in rectangles ──────────────── */
+  --r-none: 0;
+  --r-xs: 2px;
+  --r-sm: 4px;
+  --r-md: 6px;            /* buttons, tags */
+  --r-pill: 999px;        /* rare — meta chips */
+
+  /* ── Shadows — soft, warm, gallery-wall-like ───────────────────── */
+  --shadow-1: 0 1px 2px rgba(74, 52, 36, 0.06);
+  --shadow-2: 0 8px 24px -8px rgba(74, 52, 36, 0.14),
+              0 2px 6px rgba(74, 52, 36, 0.06);
+  --shadow-3: 0 24px 48px -16px rgba(74, 52, 36, 0.22),
+              0 4px 12px rgba(74, 52, 36, 0.08);
+  --shadow-frame: 0 2px 0 rgba(0,0,0,0.05),
+                  0 20px 40px -18px rgba(74,52,36,0.35),
+                  inset 0 0 0 1px rgba(74,52,36,0.08);
+
+  /* ── Motion — slow, observed, like viewing a painting ──────────── */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.6, 0, 0.2, 1);
+  --dur-fast: 180ms;
+  --dur-med:  360ms;
+  --dur-slow: 680ms;
+  --dur-reveal: 1200ms;
+
+  /* ── Max widths ────────────────────────────────────────────────── */
+  --measure-narrow: 34rem;   /* prose */
+  --measure-reading: 44rem;  /* long essays */
+  --measure-wide: 88rem;     /* gallery */
+}
+
+/* =========================================================================
+   Element defaults — use as semantic baseline
+   ========================================================================= */
+
+html { color: var(--fg); background: var(--bg); }
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: var(--w-regular);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 50, "WONK" 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--fg-strong);
+  font-weight: var(--w-regular);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-display);
+  font-variation-settings: "SOFT" 100, "opsz" 144;
+}
+
+h1 { font-size: var(--fs-h1); line-height: var(--lh-display); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); letter-spacing: 0; font-style: italic; }
+
+p  { max-width: var(--measure-reading); }
+
+.display,
+.display-xl {
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  line-height: var(--lh-display);
+  letter-spacing: -0.035em;
+  font-weight: var(--w-light);
+  font-variation-settings: "SOFT" 100, "opsz" 144;
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.45;
+  color: var(--fg);
+  font-style: italic;
+  font-weight: var(--w-light);
+  max-width: var(--measure-reading);
+}
+
+.eyebrow,
+.label-caps {
+  font-family: var(--font-ui);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  font-weight: var(--w-medium);
+  color: var(--fg-muted);
+}
+
+.caption {
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  color: var(--fg-muted);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.signature {
+  font-family: var(--font-hand);
+  font-size: 2rem;
+  color: var(--ink-2);
+  line-height: 1;
+}
+
+.rule {
+  border: 0;
+  height: 1px;
+  background: var(--border);
+  margin: var(--sp-6) 0;
+}
+
+.rule-ornament::before {
+  content: "·   ·   ·";
+  display: block;
+  text-align: center;
+  color: var(--fg-subtle);
+  letter-spacing: 1em;
+  font-size: 0.75rem;
+  margin: var(--sp-6) 0;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: color-mix(in oklch, currentColor 30%, transparent);
+  transition: color var(--dur-fast) var(--ease-out),
+              text-decoration-color var(--dur-fast) var(--ease-out);
+}
+a:hover {
+  color: var(--link-hover);
+  text-decoration-color: currentColor;
+}
+
+::selection {
+  background: var(--pigment-ochre);
+  color: var(--ink-1);
+}

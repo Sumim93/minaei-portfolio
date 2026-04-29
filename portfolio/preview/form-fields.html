@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>html,body{margin:0;padding:0;background:var(--paper-1);}
+.card{padding:22px 26px;display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.field label{display:block;font-family:var(--font-ui);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--fg-muted);margin-bottom:6px;}
+.field input,.field textarea{width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid var(--border);font-family:var(--font-body);font-size:16px;color:var(--ink-1);padding:8px 0;outline:none;}
+.field input:focus,.field textarea:focus{border-color:var(--ink-1);}
+.field .inp-boxed{border:1px solid var(--border);padding:10px 12px;border-radius:var(--r-md);background:var(--paper-0);}
+</style></head>
+<body><div class="card">
+  <div class="field">
+    <label>Your name</label>
+    <input type="text" value="Elena Morris" />
+  </div>
+  <div class="field">
+    <label>Interested in</label>
+    <input class="inp-boxed" type="text" value="Bust with Veil, 2024" />
+  </div>
+  <div class="field" style="grid-column:1/-1">
+    <label>Note</label>
+    <textarea rows="2">I saw this piece in the October journal. Is it still available, and could you share framing options?</textarea>
+  </div>
+</div></body></html>

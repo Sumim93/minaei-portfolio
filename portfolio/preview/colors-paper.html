@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--paper-1);}
+  .card{padding:22px 26px;display:flex;gap:24px;align-items:center;min-height:110px;}
+  .swatch{width:110px;height:110px;flex:none;border:1px solid var(--border-soft);}
+  .list{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .chip{display:flex;flex-direction:column;gap:6px;}
+  .chip .c{height:40px;border:1px solid var(--border-soft);}
+  .chip .n{font-family:var(--font-ui);font-size:10px;letter-spacing:.08em;color:var(--fg-muted);text-transform:uppercase;}
+  .chip .v{font-family:var(--font-ui);font-size:10px;color:var(--fg-subtle);}
+</style></head>
+<body><div class="card">
+  <div class="swatch" style="background:var(--paper-1)"></div>
+  <div class="list">
+    <div class="chip"><div class="c" style="background:var(--paper-0)"></div><div class="n">paper-0</div><div class="v">#fdfbf6</div></div>
+    <div class="chip"><div class="c" style="background:var(--paper-1)"></div><div class="n">paper-1</div><div class="v">#f6f1e6</div></div>
+    <div class="chip"><div class="c" style="background:var(--paper-2)"></div><div class="n">paper-2</div><div class="v">#ede5d3</div></div>
+    <div class="chip"><div class="c" style="background:var(--paper-3)"></div><div class="n">paper-3</div><div class="v">#dfd4bd</div></div>
+    <div class="chip"><div class="c" style="background:var(--paper-4)"></div><div class="n">paper-4</div><div class="v">#ccbea4</div></div>
+  </div>
+</div></body></html>

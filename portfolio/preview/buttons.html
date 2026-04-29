@@ -1,0 +1,19 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>html,body{margin:0;padding:0;background:var(--paper-1);}
+.card{padding:26px 30px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+.btn{font-family:var(--font-ui);font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:14px 24px;border-radius:var(--r-md);cursor:pointer;transition:all .18s var(--ease-out);border:1px solid transparent;}
+.btn-primary{background:var(--ink-1);color:var(--paper-0);}
+.btn-primary:hover{background:var(--pigment-sienna);}
+.btn-ghost{background:transparent;color:var(--ink-1);border-color:var(--ink-3);}
+.btn-ghost:hover{border-color:var(--ink-1);background:var(--paper-0);}
+.btn-link{font-family:var(--font-body);font-size:16px;letter-spacing:0;text-transform:none;padding:0;background:transparent;color:var(--pigment-umber);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.25em;font-style:italic;}
+.btn-link:after{content:" →";font-style:normal;}
+</style></head>
+<body><div class="card">
+  <button class="btn btn-primary">Inquire about this work</button>
+  <button class="btn btn-ghost">View the series</button>
+  <a class="btn-link" href="#">Read the full note</a>
+</div></body></html>

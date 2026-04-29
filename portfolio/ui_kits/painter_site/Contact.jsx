@@ -1,8 +1,39 @@
 // Contact.jsx & Series.jsx
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvzlpplq";
+
 const Contact = ({ prefill }) => {
   const { isMobile } = useBreakpoint();
   const [sent, setSent] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
+  const [error, setError] = React.useState(null);
   const px = isMobile ? "20px" : "48px";
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
+    setError(null);
+    try {
+      const formData = new FormData(e.target);
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        setSent(true);
+      } else {
+        const data = await res.json().catch(() => ({}));
+        const msg = (data.errors && data.errors.map(x => x.message).join(", ")) ||
+          "Something went wrong. Please try again, or write directly.";
+        setError(msg);
+      }
+    } catch (err) {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <div style={{ background: "var(--paper-1)" }}>
@@ -24,21 +55,34 @@ const Contact = ({ prefill }) => {
             <p style={{ fontFamily: "'Lora', serif", fontSize: 18, fontStyle: "italic", color: "var(--fg-muted)", marginTop: 16 }}>I'll write back soon — likely after Wednesday, after the October sitting ends.</p>
           </div>
         ) : (
-          <form onSubmit={e => { e.preventDefault(); setSent(true); }} style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 28 }}>
+          <form onSubmit={handleSubmit} style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 28 }}>
             {[
-              { k: "name", label: "Your name", placeholder: "Elena Morris" },
-              { k: "email", label: "Email", placeholder: "elena@morris.studio" },
+              { k: "name", label: "Your name", placeholder: "Elena Morris", required: true },
+              { k: "email", label: "Email", placeholder: "elena@morris.studio", type: "email", required: true },
             ].map(f => (
               <Field key={f.k} {...f}/>
             ))}
             <Field k="interest" label="Interested in" placeholder={prefill?.title || "A commission, a studio visit, or a specific work"} boxed defaultValue={prefill ? `${prefill.title}, ${prefill.year}` : ""} style={{ gridColumn: "1/-1" }}/>
-            <FieldArea k="note" label="Your note" placeholder="Tell me what you're looking at." style={{ gridColumn: "1/-1" }}/>
+            <FieldArea k="note" label="Your note" placeholder="Tell me what you're looking at." required style={{ gridColumn: "1/-1" }}/>
+
+            {error && (
+              <div style={{
+                gridColumn: "1/-1",
+                fontFamily: "'Lora', serif", fontStyle: "italic", fontSize: 15,
+                color: "var(--pigment-sienna)",
+                background: "var(--paper-2)",
+                padding: "14px 18px",
+                borderLeft: "2px solid var(--pigment-sienna)",
+              }}>{error}</div>
+            )}
 
             <div style={{ gridColumn: "1/-1", display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? 20 : 0, marginTop: 16, borderTop: "1px solid var(--border-soft)", paddingTop: 24 }}>
               <div style={{ fontFamily: "'Lora', serif", fontStyle: "italic", fontSize: 15, color: "var(--fg-muted)" }}>
                 Or, write directly — <a href="mailto:s.minaei1993@gmail.com" style={{ color: "var(--pigment-umber)" }}>s.minaei1993@gmail.com</a>
               </div>
-              <Button variant="primary" onClick={() => {}}>Send the note</Button>
+              <Button variant="primary" type="submit" disabled={submitting} onClick={() => {}}>
+                {submitting ? "Sending…" : "Send the note"}
+              </Button>
             </div>
           </form>
         )}
@@ -47,10 +91,10 @@ const Contact = ({ prefill }) => {
   );
 };
 
-const Field = ({ k, label, placeholder, boxed, defaultValue = "", style }) => (
+const Field = ({ k, label, placeholder, boxed, defaultValue = "", style, type = "text", required }) => (
   <div style={style}>
     <label style={{ display: "block", fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 8 }}>{label}</label>
-    <input type="text" placeholder={placeholder} defaultValue={defaultValue} style={{
+    <input name={k} type={type} placeholder={placeholder} defaultValue={defaultValue} required={required} style={{
       width: "100%", boxSizing: "border-box", background: boxed ? "var(--paper-0)" : "transparent",
       border: boxed ? "1px solid var(--border)" : 0, borderBottom: "1px solid var(--border)",
       padding: boxed ? "14px 16px" : "10px 0", fontFamily: "var(--font-body)", fontSize: 17, color: "var(--ink-1)",
@@ -59,10 +103,10 @@ const Field = ({ k, label, placeholder, boxed, defaultValue = "", style }) => (
   </div>
 );
 
-const FieldArea = ({ k, label, placeholder, style }) => (
+const FieldArea = ({ k, label, placeholder, style, required }) => (
   <div style={style}>
     <label style={{ display: "block", fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 8 }}>{label}</label>
-    <textarea rows={5} placeholder={placeholder} style={{
+    <textarea name={k} rows={5} placeholder={placeholder} required={required} style={{
       width: "100%", boxSizing: "border-box", background: "var(--paper-0)",
       border: "1px solid var(--border)", padding: "14px 16px",
       fontFamily: "var(--font-body)", fontSize: 17, color: "var(--ink-1)", outline: "none",

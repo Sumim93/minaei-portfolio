@@ -21,17 +21,6 @@ const Home = ({ onNavigate }) => {
           pointerEvents: "none", zIndex: 1,
         }} />
         <div style={{
-          position: "absolute", top: 120, left: 48, right: 48, zIndex: 2,
-          display: "flex", justifyContent: "space-between",
-          fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
-          textTransform: "uppercase", color: "var(--pigment-ochre)",
-        }}>
-          <span>A monograph · Minaei Studio</span>
-          <span>Six works · 2022 — 2024</span>
-          <span>Somaye Minaei</span>
-        </div>
-
-        <div style={{
           alignSelf: "end", padding: "0 48px 96px", maxWidth: 980,
           position: "relative", zIndex: 2,
         }}>

@@ -126,9 +126,6 @@ const Home = ({ onNavigate }) => {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 64 }}>
             <div>
-              <div style={{
-                fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
-                textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 16,
               <h2 style={{
                 fontFamily: "var(--font-display)", fontSize: "clamp(2.75rem, 5vw, 4.5rem)",
                 fontWeight: 300, letterSpacing: "-0.03em", margin: 0, lineHeight: 1.05,

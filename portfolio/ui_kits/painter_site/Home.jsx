@@ -78,17 +78,9 @@ const Home = ({ onNavigate }) => {
         }}>
           {!isMobile && (
             <div style={{ position: "sticky", top: 48 }}>
-              <div style={{
-                fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
-                textTransform: "uppercase", color: "var(--fg-muted)",
-              }}>Foreword · I.</div>
-              <div style={{ marginTop: 18, fontFamily: "'Caveat', cursive", fontSize: 38, color: "var(--pigment-sienna)", lineHeight: 1 }}>
+              <div style={{ fontFamily: "'Caveat', cursive", fontSize: 38, color: "var(--pigment-sienna)", lineHeight: 1 }}>
                 S. Minaei
               </div>
-              <div style={{
-                fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.22em",
-                textTransform: "uppercase", color: "var(--fg-muted)", marginTop: 8,
-              }}>Studio · North-facing light</div>
             </div>
           )}
 
@@ -97,25 +89,11 @@ const Home = ({ onNavigate }) => {
               <div style={{ fontFamily: "'Caveat', cursive", fontSize: 32, color: "var(--pigment-sienna)", marginBottom: 20 }}>S. Minaei</div>
             )}
             <p style={{
-              fontFamily: "'Lora', serif", fontSize: isMobile ? 22 : 30, lineHeight: 1.45,
+              fontFamily: "'Lora', serif", fontSize: isMobile ? 19 : 24, lineHeight: 1.6,
               fontStyle: "italic", fontWeight: 300, color: "var(--ink-1)",
               margin: 0, maxWidth: 760,
             }}>
-              I paint to look more slowly. A portrait, for me, is just permission to keep looking at someone until they soften.
-            </p>
-
-            <p style={{
-              fontFamily: "var(--font-body)", fontSize: isMobile ? 16 : 18, lineHeight: 1.72,
-              color: "var(--ink-2)", marginTop: 32, maxWidth: 680,
-            }}>
-              This is a working monograph. The paintings collected here span a handful of years — some were made last month, some I almost can't recognise. I start each portrait cold, almost blue, and let warmth enter only when the shapes are sure.
-            </p>
-
-            <p style={{
-              fontFamily: "var(--font-body)", fontSize: isMobile ? 16 : 18, lineHeight: 1.72,
-              color: "var(--ink-2)", marginTop: 20, maxWidth: 680,
-            }}>
-              The sitters are patient — willing to give me six Sundays and a good window. The landscapes come from walks and trips: small panels carried in a bag, worked in a single afternoon, finished back in the studio only if they earn it.
+              I paint to look more slowly. A portrait, for me, is permission to keep looking at someone until they soften. This collection brings together works from the past few years — portraits that begin in cool tones and gradually find warmth, shaped through patient sittings, alongside landscapes captured from walks and travels, often started in a single afternoon and only finished in the studio when they truly earn it.
             </p>
 
             <div style={{ color: "var(--fg-subtle)", letterSpacing: "1.2em", fontSize: 12, marginTop: 48, textAlign: "center" }}>·   ·   ·</div>

@@ -35,11 +35,6 @@ const Home = ({ onNavigate }) => {
           alignSelf: "end", padding: "0 48px 96px", maxWidth: 980,
           position: "relative", zIndex: 2,
         }}>
-          <div style={{
-            fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.32em",
-            textTransform: "uppercase", color: "var(--pigment-ochre)", marginBottom: 32,
-          }}>Plate № 01 · Frontispiece</div>
-
           <h1 style={{
             fontFamily: "var(--font-display)",
             fontSize: "clamp(4.5rem, 11vw, 10rem)",
@@ -72,7 +67,7 @@ const Home = ({ onNavigate }) => {
           position: "absolute", bottom: 32, left: 48,
           fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
           textTransform: "uppercase", color: "rgba(240,230,210,0.4)",
-        }}>↓ Continue to plate 01</div>
+        }}>↓ Scroll to explore</div>
       </section>
 
       {/* ── 02 · Foreword ─────────────────────────────────────────── */}
@@ -134,13 +129,12 @@ const Home = ({ onNavigate }) => {
               <div style={{
                 fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
                 textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 16,
-              }}>II. Plates</div>
               <h2 style={{
                 fontFamily: "var(--font-display)", fontSize: "clamp(2.75rem, 5vw, 4.5rem)",
                 fontWeight: 300, letterSpacing: "-0.03em", margin: 0, lineHeight: 1.05,
                 maxWidth: 720,
               }}>
-                Five works, <em style={{ fontWeight: 300 }}>plated.</em>
+                Selected works.
               </h2>
             </div>
             <Button variant="link" onClick={() => onNavigate("works")}>See the full catalogue →</Button>
@@ -163,7 +157,7 @@ const Home = ({ onNavigate }) => {
                     <div style={{
                       fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
                       textTransform: "uppercase", color: "var(--pigment-sienna)", marginBottom: 20,
-                    }}>Plate № {String(i + 1).padStart(2, "0")} · {p.subject}</div>
+                    }}>{p.subject}</div>
 
                     <h3 style={{
                       fontFamily: "var(--font-display)", fontSize: 48, fontStyle: "italic",
@@ -189,7 +183,7 @@ const Home = ({ onNavigate }) => {
                       fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.22em",
                       textTransform: "uppercase", color: "var(--ink-1)",
                       borderBottom: "1px solid var(--ink-1)", paddingBottom: 4, textDecoration: "none",
-                    }}>Read the plate →</a>
+                    }}>View painting →</a>
                   </div>
                 </article>
               );

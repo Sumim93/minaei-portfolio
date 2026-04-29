@@ -1,36 +1,43 @@
 // PaintingDetail.jsx — big image + notes + technical info
 const PaintingDetail = ({ painting, onNavigate }) => {
+  const { isMobile } = useBreakpoint();
   const p = painting || PAINTINGS[0];
   const [zoomed, setZoomed] = React.useState(false);
   const idx = PAINTINGS.findIndex(x => x.slug === p.slug);
   const next = PAINTINGS[(idx + 1) % PAINTINGS.length];
   const prev = PAINTINGS[(idx - 1 + PAINTINGS.length) % PAINTINGS.length];
+  const px = isMobile ? "20px" : "48px";
 
   return (
     <div style={{ background: "var(--paper-1)" }}>
       {/* Breadcrumb */}
-      <div style={{ padding: "32px 48px 0", fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-muted)" }}>
+      <div style={{ padding: `32px ${px} 0`, fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-muted)" }}>
         <a href="#" onClick={e => { e.preventDefault(); onNavigate("works"); }} style={{ color: "inherit", textDecoration: "none" }}>← Works</a>
         <span style={{ margin: "0 14px" }}>·</span>
         <span>{p.series}</span>
-        <span style={{ margin: "0 14px" }}>·</span>
-        <span>№ {String(p.number).padStart(2, "0")}</span>
+        {!isMobile && <><span style={{ margin: "0 14px" }}>·</span><span>№ {String(p.number).padStart(2, "0")}</span></>}
       </div>
 
-      {/* Hero image, off-center, with caption column */}
-      <section style={{ padding: "64px 48px 96px", display: "grid", gridTemplateColumns: "7fr 5fr", gap: 72, alignItems: "start" }}>
+      {/* Hero image + caption */}
+      <section style={{
+        padding: isMobile ? "32px 20px 64px" : "64px 48px 96px",
+        display: "grid",
+        gridTemplateColumns: isMobile ? "1fr" : "7fr 5fr",
+        gap: isMobile ? 36 : 72,
+        alignItems: "start",
+      }}>
         <Frame src={p.image} alt={p.title} onClick={() => setZoomed(true)} />
-        <div style={{ position: "sticky", top: 48, paddingTop: 20 }}>
+        <div style={{ position: isMobile ? "static" : "sticky", top: 48, paddingTop: isMobile ? 0 : 20 }}>
           <div style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 16 }}>
             № {String(p.number).padStart(2, "0")} · {p.subject}
           </div>
-          <h1 style={{ fontFamily: "var(--font-display)", fontSize: 64, fontStyle: "italic", fontWeight: 300, letterSpacing: "-0.02em", margin: 0, lineHeight: 1.05 }}>{p.title}</h1>
-          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 22, color: "var(--fg-muted)", marginTop: 14 }}>
+          <h1 style={{ fontFamily: "var(--font-display)", fontSize: isMobile ? 40 : 64, fontStyle: "italic", fontWeight: 300, letterSpacing: "-0.02em", margin: 0, lineHeight: 1.05 }}>{p.title}</h1>
+          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: isMobile ? 17 : 22, color: "var(--fg-muted)", marginTop: 14 }}>
             {p.year} · {p.medium} · {p.dimensions}
           </div>
 
           {/* Technical info table */}
-          <dl style={{ marginTop: 48, display: "grid", gridTemplateColumns: "auto 1fr", gap: "14px 32px", borderTop: "1px solid var(--border)", paddingTop: 24 }}>
+          <dl style={{ marginTop: 40, display: "grid", gridTemplateColumns: "auto 1fr", gap: "14px 24px", borderTop: "1px solid var(--border)", paddingTop: 24 }}>
             {[
               ["Year", p.year],
               ["Medium", p.medium],
@@ -52,23 +59,25 @@ const PaintingDetail = ({ painting, onNavigate }) => {
       </section>
 
       {/* The note */}
-      <section style={{ padding: "96px 48px", background: "var(--paper-2)" }}>
-        <div style={{ maxWidth: 680, margin: "0 auto" }}>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 24 }}>The note</div>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontStyle: "italic", lineHeight: 1.55, color: "var(--ink-1)", margin: 0 }}>
-            {p.note}
-          </p>
-          <div style={{ fontFamily: "'Caveat', cursive", fontSize: 30, color: "var(--ink-2)", marginTop: 28 }}>
-            — S. Minaei
+      {p.note ? (
+        <section style={{ padding: isMobile ? "64px 20px" : "96px 48px", background: "var(--paper-2)" }}>
+          <div style={{ maxWidth: 680, margin: "0 auto" }}>
+            <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 24 }}>The note</div>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: isMobile ? 19 : 22, fontStyle: "italic", lineHeight: 1.55, color: "var(--ink-1)", margin: 0 }}>
+              {p.note}
+            </p>
+            <div style={{ fontFamily: "'Caveat', cursive", fontSize: 30, color: "var(--ink-2)", marginTop: 28 }}>
+              — S. Minaei
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       {/* Brushwork detail */}
       {p.detail && (
-        <section style={{ padding: "96px 48px" }}>
+        <section style={{ padding: isMobile ? "64px 20px" : "96px 48px" }}>
           <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 24 }}>Closer · Brushwork detail</div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 36 : 48, alignItems: "center" }}>
             <div style={{ width: "100%", aspectRatio: "4/3", overflow: "hidden", boxShadow: "var(--shadow-3)", position: "relative" }}>
               <img src={p.detail} alt="" style={{
                 width: "100%", height: "100%", objectFit: "cover", display: "block",
@@ -76,7 +85,7 @@ const PaintingDetail = ({ painting, onNavigate }) => {
               }}/>
             </div>
             <div>
-              <h3 style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 300, fontStyle: "italic", margin: 0, letterSpacing: "-0.02em" }}>
+              <h3 style={{ fontFamily: "var(--font-display)", fontSize: isMobile ? 28 : 36, fontWeight: 300, fontStyle: "italic", margin: 0, letterSpacing: "-0.02em" }}>
                 How the paint sits.
               </h3>
               {p.progress && (
@@ -97,14 +106,14 @@ const PaintingDetail = ({ painting, onNavigate }) => {
       )}
 
       {/* Prev / next */}
-      <section style={{ padding: "64px 48px", borderTop: "1px solid var(--border-soft)", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48 }}>
+      <section style={{ padding: isMobile ? "48px 20px" : "64px 48px", borderTop: "1px solid var(--border-soft)", display: "grid", gridTemplateColumns: "1fr 1fr", gap: isMobile ? 24 : 48 }}>
         <a href="#" onClick={e => { e.preventDefault(); onNavigate("painting", prev); }} style={{ textDecoration: "none" }}>
           <div style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 10 }}>← Previous</div>
-          <div style={{ fontFamily: "var(--font-display)", fontSize: 28, fontStyle: "italic", fontWeight: 300, color: "var(--ink-1)" }}>{prev.title}</div>
+          <div style={{ fontFamily: "var(--font-display)", fontSize: isMobile ? 20 : 28, fontStyle: "italic", fontWeight: 300, color: "var(--ink-1)" }}>{prev.title}</div>
         </a>
         <a href="#" onClick={e => { e.preventDefault(); onNavigate("painting", next); }} style={{ textDecoration: "none", textAlign: "right" }}>
           <div style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 10 }}>Next →</div>
-          <div style={{ fontFamily: "var(--font-display)", fontSize: 28, fontStyle: "italic", fontWeight: 300, color: "var(--ink-1)" }}>{next.title}</div>
+          <div style={{ fontFamily: "var(--font-display)", fontSize: isMobile ? 20 : 28, fontStyle: "italic", fontWeight: 300, color: "var(--ink-1)" }}>{next.title}</div>
         </a>
       </section>
 
@@ -112,14 +121,14 @@ const PaintingDetail = ({ painting, onNavigate }) => {
       {zoomed && (
         <div onClick={() => setZoomed(false)} style={{
           position: "fixed", inset: 0, background: "rgba(20,17,13,0.94)", zIndex: 100,
-          display: "flex", alignItems: "center", justifyContent: "center", padding: 48,
+          display: "flex", alignItems: "center", justifyContent: "center", padding: isMobile ? 16 : 48,
           cursor: "zoom-out", backdropFilter: "blur(8px)",
         }}>
-          <img src={p.image} alt={p.title} style={{ maxWidth: "88%", maxHeight: "88vh", boxShadow: "0 40px 80px rgba(0,0,0,0.5)" }}/>
+          <img src={p.image} alt={p.title} style={{ maxWidth: "92%", maxHeight: "88vh", boxShadow: "0 40px 80px rgba(0,0,0,0.5)" }}/>
           <button onClick={e => { e.stopPropagation(); setZoomed(false); }} style={{
-            position: "absolute", top: 32, right: 32, background: "transparent", border: 0, color: "var(--dark-on-1)", cursor: "pointer",
+            position: "absolute", top: 24, right: 24, background: "transparent", border: 0, color: "var(--dark-on-1)", cursor: "pointer",
           }}><Icon name="close" size={28}/></button>
-          <div style={{ position: "absolute", bottom: 32, left: 0, right: 0, textAlign: "center", color: "var(--dark-on-2)", fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 16 }}>
+          <div style={{ position: "absolute", bottom: 24, left: 0, right: 0, textAlign: "center", color: "var(--dark-on-2)", fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 15 }}>
             {p.title}, {p.year} · {p.dimensions}
           </div>
         </div>

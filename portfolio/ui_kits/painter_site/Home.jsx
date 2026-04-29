@@ -166,41 +166,40 @@ const Home = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* ── 04 · Notes from my paintings ─────────────────────────── */}
-      {(() => {
-        const withNotes = PAINTINGS.filter(p => p.note);
-        const noted = withNotes[Math.floor(Math.random() * withNotes.length)];
-        return (
-          <section style={{ background: "var(--dark-2)", color: "var(--dark-on-1)", padding: isMobile ? "72px 20px" : "120px 48px" }}>
-            <div style={{
-              maxWidth: 1200, margin: "0 auto",
-              display: "grid",
-              gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-              gap: isMobile ? 36 : 80,
-              alignItems: "center",
-            }}>
-              <img src={noted.hero || noted.image} alt={noted.title} style={{ width: "100%", boxShadow: "0 40px 80px -20px rgba(0,0,0,0.6)" }}/>
-              <div>
-                <div style={{
-                  fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
-                  textTransform: "uppercase", color: "var(--pigment-ochre)", marginBottom: 24,
-                }}>Notes from my paintings</div>
-                <blockquote style={{
-                  fontFamily: "'Lora', serif", fontSize: isMobile ? 20 : 28, lineHeight: 1.55,
-                  fontStyle: "italic", fontWeight: 300, color: "var(--dark-on-1)", margin: 0,
-                }}>
-                  <span style={{ color: "var(--pigment-ochre)", fontSize: isMobile ? 40 : 54, lineHeight: 0, verticalAlign: "-0.2em", marginRight: 4 }}>"</span>
-                  {noted.note}
-                </blockquote>
-                <div style={{
-                  fontFamily: "var(--font-display)", fontSize: isMobile ? 18 : 22, fontStyle: "italic",
-                  color: "var(--pigment-ochre)", marginTop: 28, opacity: 0.85,
-                }}>— {noted.title}, {noted.year}</div>
+      {/* ── 04 · In the studio ───────────────────────────────────── */}
+      <section style={{ background: "var(--dark-2)", color: "var(--dark-on-1)", padding: isMobile ? "72px 20px" : "120px 48px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{
+            fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
+            textTransform: "uppercase", color: "var(--pigment-ochre)",
+            marginBottom: 16, textAlign: "center",
+          }}>In the studio</div>
+          <div style={{
+            fontFamily: "'Lora', serif", fontStyle: "italic",
+            fontSize: isMobile ? 18 : 22, color: "var(--dark-on-2)",
+            textAlign: "center", marginBottom: isMobile ? 40 : 56,
+          }}>
+            Now in the works — details from a portrait in progress.
+          </div>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
+            gap: isMobile ? 16 : 24,
+          }}>
+            {[1, 2, 3].map(n => (
+              <div key={n} style={{ aspectRatio: "4/3", overflow: "hidden", boxShadow: "0 20px 40px -10px rgba(0,0,0,0.5)" }}>
+                <img
+                  src={`assets/studio/studio-${n}.jpg`}
+                  alt=""
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.6s ease" }}
+                  onMouseOver={e => e.currentTarget.style.transform = "scale(1.04)"}
+                  onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}
+                />
               </div>
-            </div>
-          </section>
-        );
-      })()}
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── 05 · Series photo strip ───────────────────────────────── */}
       <section style={{ background: "var(--paper-1)", color: "var(--ink-1)", padding: isMobile ? "64px 0 56px" : "96px 0 80px", overflow: "hidden" }}>

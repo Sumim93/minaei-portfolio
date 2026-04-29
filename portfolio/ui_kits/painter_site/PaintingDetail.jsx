@@ -32,7 +32,7 @@ const PaintingDetail = ({ painting, onNavigate }) => {
             № {String(p.number).padStart(2, "0")} · {p.subject}
           </div>
           <h1 style={{ fontFamily: "var(--font-display)", fontSize: isMobile ? 40 : 64, fontStyle: "italic", fontWeight: 300, letterSpacing: "-0.02em", margin: 0, lineHeight: 1.05 }}>{p.title}</h1>
-          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: isMobile ? 17 : 22, color: "var(--fg-muted)", marginTop: 14 }}>
+          <div style={{ fontFamily: "'EB Garamond', serif", fontStyle: "italic", fontSize: isMobile ? 17 : 22, color: "var(--fg-muted)", marginTop: 14 }}>
             {p.year} · {p.medium} · {p.dimensions}
           </div>
 
@@ -63,7 +63,7 @@ const PaintingDetail = ({ painting, onNavigate }) => {
         <section style={{ padding: isMobile ? "64px 20px" : "96px 48px", background: "var(--paper-2)" }}>
           <div style={{ maxWidth: 680, margin: "0 auto" }}>
             <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 24 }}>The note</div>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: isMobile ? 19 : 22, fontStyle: "italic", lineHeight: 1.55, color: "var(--ink-1)", margin: 0 }}>
+            <p style={{ fontFamily: "'EB Garamond', serif", fontSize: isMobile ? 19 : 22, fontStyle: "italic", lineHeight: 1.55, color: "var(--ink-1)", margin: 0 }}>
               {p.note}
             </p>
             <div style={{ fontFamily: "'Caveat', cursive", fontSize: 30, color: "var(--ink-2)", marginTop: 28 }}>
@@ -128,7 +128,7 @@ const PaintingDetail = ({ painting, onNavigate }) => {
           <button onClick={e => { e.stopPropagation(); setZoomed(false); }} style={{
             position: "absolute", top: 24, right: 24, background: "transparent", border: 0, color: "var(--dark-on-1)", cursor: "pointer",
           }}><Icon name="close" size={28}/></button>
-          <div style={{ position: "absolute", bottom: 24, left: 0, right: 0, textAlign: "center", color: "var(--dark-on-2)", fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 15 }}>
+          <div style={{ position: "absolute", bottom: 24, left: 0, right: 0, textAlign: "center", color: "var(--dark-on-2)", fontFamily: "'EB Garamond', serif", fontStyle: "italic", fontSize: 15 }}>
             {p.title}, {p.year} · {p.dimensions}
           </div>
         </div>

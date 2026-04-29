@@ -21,13 +21,13 @@ const About = () => {
       }}>
         <div>
           <Frame src="assets/Profile.jpg" alt="Somaye Minaei" matted={true}/>
-          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 15, color: "var(--fg-muted)", marginTop: 14, textAlign: "center" }}>
+          <div style={{ fontFamily: "'EB Garamond', serif", fontStyle: "italic", fontSize: 15, color: "var(--fg-muted)", marginTop: 14, textAlign: "center" }}>
             Somaye Minaei — painter.
           </div>
         </div>
 
         <div style={{ paddingTop: isMobile ? 0 : 20 }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: isMobile ? 20 : 24, fontStyle: "italic", lineHeight: 1.55, color: "var(--ink-1)", margin: 0 }}>
+          <p style={{ fontFamily: "'EB Garamond', serif", fontSize: isMobile ? 20 : 24, fontStyle: "italic", lineHeight: 1.55, color: "var(--ink-1)", margin: 0 }}>
             I paint to look more slowly. That is the whole of it — a portrait, for me, is just permission to keep looking at someone until they soften.
           </p>
           <p style={{ fontFamily: "var(--font-body)", fontSize: 17, lineHeight: 1.7, color: "var(--ink-2)", marginTop: 32, maxWidth: 620 }}>
@@ -66,7 +66,7 @@ const About = () => {
       {/* In the studio */}
       <section style={{ padding: isMobile ? "64px 20px" : "96px 48px", background: "var(--paper-0)", borderTop: "1px solid var(--border-soft)" }}>
         <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 16, textAlign: "center" }}>In the studio</div>
-        <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 20, color: "var(--ink-2)", textAlign: "center", marginBottom: 48 }}>
+        <div style={{ fontFamily: "'EB Garamond', serif", fontStyle: "italic", fontSize: 20, color: "var(--ink-2)", textAlign: "center", marginBottom: 48 }}>
           Now in the works — details from a portrait in progress.
         </div>
         <div style={{

@@ -39,12 +39,11 @@ const Header = ({ current = "works", onNavigate, variant = "light" }) => {
       {/* Logo */}
       <a href="#" onClick={(e) => { e.preventDefault(); onNavigate?.("home"); setMenuOpen(false); }} style={{
         fontFamily: "var(--font-display)",
-        fontSize: 30,
-        fontWeight: 300,
+        fontSize: 28,
+        fontWeight: 700,
         letterSpacing: "-0.02em",
         color: "inherit",
         textDecoration: "none",
-        fontVariationSettings: '"opsz" 144, "SOFT" 100',
       }}>Sumim</a>
 
       {/* Desktop nav */}

@@ -58,9 +58,9 @@
   --link-hover: var(--pigment-sienna);
 
   /* ── Type scale (editorial, with optical sizing in mind) ───────── */
-  --font-display: 'Fraunces', 'Cormorant Garamond', 'Times New Roman', serif;
-  --font-serif:   'Cormorant Garamond', 'EB Garamond', Georgia, serif;
-  --font-body:    'Fraunces', 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Playfair Display', 'Times New Roman', serif;
+  --font-serif:   'EB Garamond', Georgia, serif;
+  --font-body:    'EB Garamond', Georgia, serif;
   --font-ui:      'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-hand:    'Caveat', 'Homemade Apple', cursive;
 
@@ -150,7 +150,6 @@ body {
   line-height: var(--lh-body);
   font-weight: var(--w-regular);
   font-optical-sizing: auto;
-  font-variation-settings: "SOFT" 50, "WONK" 0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -161,7 +160,6 @@ h1, h2, h3, h4 {
   font-weight: var(--w-regular);
   line-height: var(--lh-heading);
   letter-spacing: var(--ls-display);
-  font-variation-settings: "SOFT" 100, "opsz" 144;
 }
 
 h1 { font-size: var(--fs-h1); line-height: var(--lh-display); }
@@ -178,7 +176,6 @@ p  { max-width: var(--measure-reading); }
   line-height: var(--lh-display);
   letter-spacing: -0.035em;
   font-weight: var(--w-light);
-  font-variation-settings: "SOFT" 100, "opsz" 144;
 }
 
 .lead {

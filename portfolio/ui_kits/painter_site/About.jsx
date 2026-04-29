@@ -82,12 +82,12 @@ const About = () => {
         </div>
         <div style={{
           display: "grid",
-          gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
+          gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
           gap: 16,
           maxWidth: 1400,
           margin: "0 auto",
         }}>
-          {[1, 2, 3, 4].map(n => (
+          {[1, 2, 3].map(n => (
             <div key={n} style={{ aspectRatio: "1/1", overflow: "hidden", boxShadow: "var(--shadow-2)" }}>
               <img
                 src={`assets/studio/studio-${n}.jpg`}

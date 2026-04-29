@@ -36,7 +36,7 @@ const Home = ({ onNavigate }) => {
           </h1>
 
           <p style={{
-            fontFamily: "'EB Garamond', serif", fontSize: isMobile ? 20 : 26, lineHeight: 1.5,
+            fontFamily: "'Lora', serif", fontSize: isMobile ? 20 : 26, lineHeight: 1.5,
             fontStyle: "italic", fontWeight: 300,
             color: "var(--dark-on-2)", maxWidth: 640, marginTop: 28,
           }}>
@@ -96,7 +96,7 @@ const Home = ({ onNavigate }) => {
               <div style={{ fontFamily: "'Caveat', cursive", fontSize: 32, color: "var(--pigment-sienna)", marginBottom: 20 }}>S. Minaei</div>
             )}
             <p style={{
-              fontFamily: "'EB Garamond', serif", fontSize: isMobile ? 22 : 30, lineHeight: 1.45,
+              fontFamily: "'Lora', serif", fontSize: isMobile ? 22 : 30, lineHeight: 1.45,
               fontStyle: "italic", fontWeight: 300, color: "var(--ink-1)",
               margin: 0, maxWidth: 760,
             }}>
@@ -166,7 +166,7 @@ const Home = ({ onNavigate }) => {
                     }}>{p.title}</h3>
 
                     <div style={{
-                      fontFamily: "'EB Garamond', serif", fontStyle: "italic", fontSize: isMobile ? 16 : 19,
+                      fontFamily: "'Lora', serif", fontStyle: "italic", fontSize: isMobile ? 16 : 19,
                       color: "var(--fg-muted)", marginTop: 12,
                     }}>{p.year} · {p.medium} · {p.dimensions}</div>
 
@@ -212,7 +212,7 @@ const Home = ({ onNavigate }) => {
                   textTransform: "uppercase", color: "var(--pigment-ochre)", marginBottom: 24,
                 }}>Notes from my paintings</div>
                 <blockquote style={{
-                  fontFamily: "'EB Garamond', serif", fontSize: isMobile ? 20 : 28, lineHeight: 1.55,
+                  fontFamily: "'Lora', serif", fontSize: isMobile ? 20 : 28, lineHeight: 1.55,
                   fontStyle: "italic", fontWeight: 300, color: "var(--dark-on-1)", margin: 0,
                 }}>
                   <span style={{ color: "var(--pigment-ochre)", fontSize: isMobile ? 40 : 54, lineHeight: 0, verticalAlign: "-0.2em", marginRight: 4 }}>"</span>
@@ -287,7 +287,7 @@ const Home = ({ onNavigate }) => {
             fontWeight: 300, color: "var(--dark-on-1)", letterSpacing: "-0.02em",
           }}>Write to me.</div>
           <p style={{
-            fontFamily: "'EB Garamond', serif", fontSize: isMobile ? 17 : 19, fontStyle: "italic",
+            fontFamily: "'Lora', serif", fontSize: isMobile ? 17 : 19, fontStyle: "italic",
             color: "var(--dark-on-2)", marginTop: 16, maxWidth: 520, marginLeft: "auto", marginRight: "auto",
           }}>
             For commissions, studio visits, or a slow reply about painting.

@@ -241,7 +241,7 @@ const Home = ({ onNavigate }) => {
             {[...Array(31).keys()].concat([...Array(31).keys()]).map((i, idx) => (
               <img
                 key={idx}
-                src={`assets/series/series-${i + 1}.jpg`}
+                src={`assets/series-thumb/thumb-${i + 1}.jpg`}
                 alt=""
                 className="strip-img"
                 loading="eager"

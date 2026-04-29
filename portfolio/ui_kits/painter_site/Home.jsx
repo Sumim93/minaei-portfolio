@@ -209,52 +209,42 @@ const Home = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* ── 05 · Series index ─────────────────────────────────────── */}
-      <section style={{
-        background: "var(--paper-1)", color: "var(--ink-1)",
-        padding: "120px 48px",
-      }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", marginBottom: 72 }}>
-            <div>
-              <div style={{
-                fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
-                textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 16,
-              }}>IV. Series</div>
-              <h2 style={{
-                fontFamily: "var(--font-display)", fontSize: 56, fontWeight: 300,
-                letterSpacing: "-0.03em", margin: 0,
-              }}>
-                Three, <em style={{ fontWeight: 300 }}>in progress.</em>
-              </h2>
-            </div>
-            <Button variant="link" onClick={() => onNavigate("series")}>All series →</Button>
-          </div>
+      {/* ── 05 · Series photo strip ───────────────────────────────── */}
+      <section style={{ background: "var(--paper-1)", color: "var(--ink-1)", padding: "96px 0 80px", overflow: "hidden" }}>
+        <style>{`
+          @keyframes marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .photo-strip { display: flex; animation: marquee 40s linear infinite; width: max-content; }
+          .photo-strip:hover { animation-play-state: paused; }
+        `}</style>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 48 }}>
-            {SERIES.map((s, i) => (
-              <a key={s.slug} href="#" onClick={e => { e.preventDefault(); onNavigate("series"); }} style={{
-                textDecoration: "none", color: "inherit",
-                borderTop: "1px solid var(--ink-1)", paddingTop: 28,
-                display: "block",
+        <div style={{ padding: "0 48px", marginBottom: 40, display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+          <h2 style={{
+            fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 4vw, 3.5rem)",
+            fontWeight: 300, fontStyle: "italic", letterSpacing: "-0.03em", margin: 0,
+          }}>
+            the world outside the studio.
+          </h2>
+          <Button variant="link" onClick={() => onNavigate("series")}>View all →</Button>
+        </div>
+
+        <div style={{ position: "relative" }}>
+          <div className="photo-strip">
+            {[...Array(31).keys()].concat([...Array(31).keys()]).map((i, idx) => (
+              <div key={idx} onClick={() => onNavigate("series")} style={{
+                flexShrink: 0, width: 220, height: 300, marginRight: 16,
+                overflow: "hidden", cursor: "pointer",
               }}>
-                <div style={{
-                  display: "flex", justifyContent: "space-between",
-                  fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.24em",
-                  textTransform: "uppercase", color: "var(--fg-muted)",
-                }}>
-                  <span>№ {String(i + 1).padStart(2, "0")}</span>
-                  <span>{s.count} works · {s.years}</span>
-                </div>
-                <h3 style={{
-                  fontFamily: "var(--font-display)", fontSize: 40, fontWeight: 300, fontStyle: "italic",
-                  margin: "20px 0 16px", color: "var(--ink-1)", letterSpacing: "-0.02em",
-                }}>{s.title}</h3>
-                <p style={{
-                  fontFamily: "var(--font-body)", fontSize: 16, color: "var(--ink-2)",
-                  lineHeight: 1.6, margin: 0,
-                }}>{s.summary}</p>
-              </a>
+                <img
+                  src={`assets/series/series-${i + 1}.jpg`}
+                  alt=""
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.4s ease" }}
+                  onMouseOver={e => e.currentTarget.style.transform = "scale(1.05)"}
+                  onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}
+                />
+              </div>
             ))}
           </div>
         </div>

@@ -34,9 +34,19 @@ const Footer = ({ onNavigate }) => {
       </div>
 
       {[
-        { title: "Studio", items: ["Works", "Series", "About"] },
-        { title: "Write to me", items: ["Commissions", "Studio visits", "Contact"] },
-        { title: "Elsewhere", items: [{ label: "Instagram", href: "https://www.instagram.com/Somaye_Minaei" }] },
+        { title: "Studio", items: [
+          { label: "Works",  page: "works" },
+          { label: "Series", page: "series" },
+          { label: "About",  page: "about" },
+        ]},
+        { title: "Write to me", items: [
+          { label: "Commissions",  page: "contact" },
+          { label: "Studio visits", page: "contact" },
+          { label: "Contact",      page: "contact" },
+        ]},
+        { title: "Elsewhere", items: [
+          { label: "Instagram", href: "https://www.instagram.com/Somaye_Minaei" },
+        ]},
       ].map(col => (
         <div key={col.title}>
           <div style={{
@@ -49,22 +59,22 @@ const Footer = ({ onNavigate }) => {
           }}>{col.title}</div>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
             {col.items.map(it => {
-              const label = typeof it === "string" ? it : it.label;
-              const href  = typeof it === "string" ? "#" : it.href;
-              const external = href.startsWith("http");
+              const external = it.href && it.href.startsWith("http");
               return (
-                <li key={label}>
+                <li key={it.label}>
                   <a
-                    href={href}
+                    href={it.href || "#"}
                     target={external ? "_blank" : undefined}
                     rel={external ? "noopener noreferrer" : undefined}
+                    onClick={it.page ? (e) => { e.preventDefault(); onNavigate(it.page); } : undefined}
                     style={{
                       fontFamily: "var(--font-body)",
                       fontSize: 15,
                       color: "var(--ink-2)",
                       textDecoration: "none",
+                      cursor: "pointer",
                     }}
-                  >{label}</a>
+                  >{it.label}</a>
                 </li>
               );
             })}

@@ -36,7 +36,7 @@ const Footer = ({ onNavigate }) => {
       {[
         { title: "Studio", items: ["Works", "Series", "About"] },
         { title: "Write to me", items: ["Commissions", "Studio visits", "Contact"] },
-        { title: "Elsewhere", items: ["Instagram", "Substack"] },
+        { title: "Elsewhere", items: [{ label: "Instagram", href: "https://www.instagram.com/Somaye_Minaei" }, { label: "Substack", href: "#" }] },
       ].map(col => (
         <div key={col.title}>
           <div style={{
@@ -48,16 +48,26 @@ const Footer = ({ onNavigate }) => {
             marginBottom: 18,
           }}>{col.title}</div>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-            {col.items.map(it => (
-              <li key={it}>
-                <a href="#" style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 15,
-                  color: "var(--ink-2)",
-                  textDecoration: "none",
-                }}>{it}</a>
-              </li>
-            ))}
+            {col.items.map(it => {
+              const label = typeof it === "string" ? it : it.label;
+              const href  = typeof it === "string" ? "#" : it.href;
+              const external = href.startsWith("http");
+              return (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noopener noreferrer" : undefined}
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: 15,
+                      color: "var(--ink-2)",
+                      textDecoration: "none",
+                    }}
+                  >{label}</a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       ))}

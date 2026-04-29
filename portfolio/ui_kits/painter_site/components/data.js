@@ -2,6 +2,22 @@
 // Artist: Somaye Minaei · signed "S. Minaei"
 const PAINTINGS = [
   {
+    slug: "statue",
+    number: 8,
+    title: "Statue",
+    year: 2024,
+    medium: "Oil on linen",
+    dimensions: "— × — in.",
+    subject: "Portrait Studies",
+    series: "Portraits",
+    image: "assets/paintings/statue.jpg",
+    thumb: "assets/paintings/statue.jpg",
+    detail: "assets/paintings/statue.jpg",
+    square: "assets/paintings/statue.jpg",
+    available: false,
+    note: "",
+  },
+  {
     slug: "candle-veil",
     number: 7,
     title: "Candle, Veiled",

@@ -36,7 +36,7 @@ const Footer = ({ onNavigate }) => {
       {[
         { title: "Studio", items: ["Works", "Series", "About"] },
         { title: "Write to me", items: ["Commissions", "Studio visits", "Contact"] },
-        { title: "Elsewhere", items: [{ label: "Instagram", href: "https://www.instagram.com/Somaye_Minaei" }, { label: "Substack", href: "#" }] },
+        { title: "Elsewhere", items: [{ label: "Instagram", href: "https://www.instagram.com/Somaye_Minaei" }] },
       ].map(col => (
         <div key={col.title}>
           <div style={{

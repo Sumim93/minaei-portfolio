@@ -13,18 +13,18 @@
 
 :root {
   /* ── Ink (foreground) ───────────────────────────────────────────── */
-  --ink-1: #1a1612;         /* near-black, warm. titles, heavy text. */
-  --ink-2: #3a2f25;         /* dark umber. body. */
-  --ink-3: #6b5b4a;         /* raw-umber grey. secondary. */
-  --ink-4: #9c8d7a;         /* soft taupe. tertiary, captions. */
-  --ink-5: #bfb29e;         /* fog. borders, dividers. */
+  --ink-1: #1a1818;         /* near-black, slightly cooler. titles, heavy text. */
+  --ink-2: #383130;         /* cooled umber. body. */
+  --ink-3: #675f58;         /* cooled raw-umber. secondary. */
+  --ink-4: #988f88;         /* cooled taupe. tertiary, captions. */
+  --ink-5: #bcb5ad;         /* cooled fog. borders, dividers. */
 
   /* ── Paper (backgrounds) ───────────────────────────────────────── */
-  --paper-0: #fdfbf6;       /* crisp linen — lightest, cooler white. */
-  --paper-1: #f6f1e6;       /* soft cream — default page, less yellow. */
-  --paper-2: #ede5d3;       /* kraft-light — cards, raised. */
-  --paper-3: #dfd4bd;       /* aged paper — sections. */
-  --paper-4: #ccbea4;       /* deep cream — accents. */
+  --paper-0: #fafaf9;       /* crisp linen — lightest. */
+  --paper-1: #f2efea;       /* soft cream — default page. */
+  --paper-2: #e9e4da;       /* cooled kraft — cards, raised. */
+  --paper-3: #dbd4c9;       /* cooled aged paper — sections. */
+  --paper-4: #c8bfb0;       /* cooled deep cream — accents. */
 
   /* ── Pigments (accent/brand colors, drawn from oil palette) ────── */
   --pigment-ochre:     #c9a961;   /* yellow ochre */
@@ -36,11 +36,11 @@
   --pigment-alabaster: #e8dfcc;   /* statuary off-white */
 
   /* ── Dark (moody mode, hero sections) ──────────────────────────── */
-  --dark-1: #14110d;
-  --dark-2: #1f1a14;
-  --dark-3: #2a241c;
-  --dark-on-1: #f0e6d2;
-  --dark-on-2: #c9b99a;
+  --dark-1: #141314;
+  --dark-2: #1e1d1e;
+  --dark-3: #282522;
+  --dark-on-1: #ece8e2;
+  --dark-on-2: #c4bcb0;
 
   /* ── Semantic (apply these in components, not raw tokens) ──────── */
   --fg: var(--ink-2);

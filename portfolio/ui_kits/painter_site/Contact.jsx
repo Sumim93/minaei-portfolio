@@ -68,31 +68,99 @@ const FieldArea = ({ k, label, placeholder, style }) => (
   </div>
 );
 
+const PHOTO_SERIES = [
+  {
+    slug: "the-garden",
+    title: "The Garden",
+    description: "Summer afternoons in a rose garden, my paintings laid out around me. A day of open air and warm light — letting the work breathe outside the studio for the first time.",
+    photos: [1, 3, 5],
+  },
+  {
+    slug: "blossom",
+    title: "Blossom",
+    description: "April in Switzerland. Cherry trees in full flower, fields of dandelions still wet from the night. These were taken before the season turned — that week when everything arrives at once.",
+    photos: [2, 4, 6, 8],
+  },
+  {
+    slug: "golden-hour",
+    title: "Golden Hour",
+    description: "Photographed at dusk in the open fields near home. The light at that hour does something to the world — it makes everything feel both present and already past.",
+    photos: [7, 9, 10, 11],
+  },
+  {
+    slug: "above-the-treeline",
+    title: "Above the Treeline",
+    description: "Autumn in the Swiss Alps — first snow on the peaks, the valley still amber and green below. I go to the mountains to remember what scale feels like, and to be quietly small inside it.",
+    photos: [12, 13, 14, 15, 16, 17],
+  },
+  {
+    slug: "carrying-it",
+    title: "Carrying It",
+    description: "A portrait carried out into a snowy field. I wanted to see what it looked like in the world — the painting held against winter, its warm candlelight pressed against all that white and grey.",
+    photos: [18, 19, 20, 21, 22],
+  },
+  {
+    slug: "by-the-water",
+    title: "By the Water",
+    description: "Autumn, beside a still river. The painting rested in the tall grass while I stood behind it — two portraits facing the same water, the same low light, the same quiet.",
+    photos: [23, 24, 25, 26],
+  },
+  {
+    slug: "wandering",
+    title: "Wandering",
+    description: "October walks through the park and over the old bridge, always carrying something. The painting travels with me — it changes when the season does, and so do I.",
+    photos: [27, 28, 29, 30, 31],
+  },
+];
+
 const Series = ({ onNavigate }) => (
   <div style={{ background: "var(--paper-1)" }}>
-    <section style={{ padding: "96px 48px 56px" }}>
-      <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 24 }}>Three in progress</div>
+    <section style={{ padding: "96px 48px 72px" }}>
       <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem, 6vw, 5.5rem)", fontWeight: 300, letterSpacing: "-0.035em", margin: 0, lineHeight: 1.02 }}>
-        Series — the ones I keep<br/><em style={{ fontWeight: 300 }}>coming back to.</em>
+        Photographs — <em style={{ fontWeight: 300 }}>the world outside the studio.</em>
       </h1>
     </section>
-    {SERIES.map((s, i) => {
-      const works = PAINTINGS.filter(p => p.series === s.title).slice(0, 3);
-      return (
-        <section key={s.slug} style={{ padding: "72px 48px", borderTop: "1px solid var(--border-soft)", background: i % 2 ? "var(--paper-2)" : "transparent" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 64, alignItems: "start" }}>
-            <div style={{ position: "sticky", top: 48 }}>
-              <div style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)" }}>№ {String(i + 1).padStart(2, "0")} · {s.count} works · {s.years}</div>
-              <h2 style={{ fontFamily: "var(--font-display)", fontSize: 56, fontWeight: 300, fontStyle: "italic", margin: "12px 0 20px", letterSpacing: "-0.02em" }}>{s.title}</h2>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontStyle: "italic", lineHeight: 1.55, color: "var(--ink-2)", margin: 0 }}>{s.summary}</p>
+
+    {PHOTO_SERIES.map((s, i) => (
+      <section key={s.slug} style={{
+        padding: "80px 48px",
+        borderTop: "1px solid var(--border-soft)",
+        background: i % 2 === 1 ? "var(--paper-2)" : "transparent",
+      }}>
+        <div style={{ marginBottom: 48 }}>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.2rem, 4vw, 3.8rem)", fontWeight: 300, fontStyle: "italic", margin: "0 0 16px", letterSpacing: "-0.025em" }}>
+            {s.title}
+          </h2>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontStyle: "italic", lineHeight: 1.6, color: "var(--ink-2)", margin: 0, maxWidth: 680 }}>
+            {s.description}
+          </p>
+        </div>
+
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: s.photos.length >= 4
+            ? "repeat(4, 1fr)"
+            : `repeat(${s.photos.length}, 1fr)`,
+          gap: 16,
+        }}>
+          {s.photos.map((n, j) => (
+            <div key={n} style={{
+              aspectRatio: j === 0 && s.photos.length >= 4 ? "3/4" : "2/3",
+              overflow: "hidden",
+              gridRow: j === 0 && s.photos.length >= 4 ? "span 2" : "auto",
+            }}>
+              <img
+                src={`assets/series/series-${n}.jpg`}
+                alt=""
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
+                onMouseOver={e => e.currentTarget.style.transform = "scale(1.03)"}
+                onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}
+              />
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 40 }}>
-              {works.map(w => <PaintingCard key={w.slug} painting={w} onClick={() => onNavigate("painting", w)} size="sm" showTags={false}/>)}
-            </div>
-          </div>
-        </section>
-      );
-    })}
+          ))}
+        </div>
+      </section>
+    ))}
   </div>
 );
 

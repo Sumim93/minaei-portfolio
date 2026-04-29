@@ -93,7 +93,6 @@ const Home = ({ onNavigate }) => {
             I work in oil, mostly on canvas. My subjects range from portraits to landscapes, sometimes a face caught in candlelight, sometimes a tree on a rock or red desert cliffs. I'm drawn to light and what it does to a surface, whether that's skin, stone, or water. Each piece starts with something that makes me want to look longer.
           </p>
 
-          <div style={{ color: "var(--fg-subtle)", letterSpacing: "1.2em", fontSize: 12, marginTop: 56 }}>·   ·   ·</div>
         </div>
       </section>
 

@@ -33,7 +33,7 @@ const Footer = ({ onNavigate }) => {
           lineHeight: 1.5,
           maxWidth: 280,
         }}>
-          An oil-painting studio. Portraits, landscapes, and the long looking between them.
+          Oil paintings by Somaye Minaei.
         </p>
       </div>
 
@@ -45,7 +45,6 @@ const Footer = ({ onNavigate }) => {
         ]},
         { title: "Write to me", items: [
           { label: "Commissions",  page: "contact" },
-          { label: "Studio visits", page: "contact" },
           { label: "Contact",      page: "contact" },
         ]},
         { title: "Elsewhere", items: [

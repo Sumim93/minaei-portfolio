@@ -39,7 +39,7 @@ const Home = ({ onNavigate }) => {
             fontStyle: "italic", fontWeight: 300,
             color: "var(--dark-on-2)", maxWidth: 640, marginTop: 36,
           }}>
-            Six oil paintings, collected and annotated. Portraits, light studies, two landscapes from walks — one long argument about looking.
+            I paint to look more slowly. That is the whole of it.
           </p>
 
           <div style={{ display: "flex", gap: 24, marginTop: 44, alignItems: "center" }}>

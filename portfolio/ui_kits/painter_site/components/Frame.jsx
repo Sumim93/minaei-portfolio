@@ -4,21 +4,17 @@ const Frame = ({ src, alt = "", ratio, matted = true, onClick, children }) => {
     if (!onClick) return;
     const el = e.currentTarget;
     const rect = el.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;   // -0.5 → 0.5 left to right
-    const y = (e.clientY - rect.top)  / rect.height - 0.5;  // -0.5 → 0.5 top to bottom
-    el.style.transition = "box-shadow 0.15s ease, transform 0.08s linear";
-    el.style.transform = `perspective(700px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateZ(6px)`;
-    el.style.boxShadow = matted
-      ? `${-x * 12}px ${y * 12}px 40px -12px rgba(74,52,36,0.28), inset 0 0 0 1px rgba(74,52,36,0.08)`
-      : "none";
+    const x = (e.clientX - rect.left) / rect.width - 0.5;   // -0.5 → 0.5
+    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    el.style.transition = "transform 0.12s ease-out";
+    el.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
   };
 
   const handleMouseLeave = (e) => {
     if (!onClick) return;
     const el = e.currentTarget;
-    el.style.transition = "transform 0.5s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.5s cubic-bezier(0.2,0.8,0.2,1)";
-    el.style.transform = "perspective(700px) rotateY(0deg) rotateX(0deg) translateZ(0)";
-    el.style.boxShadow = matted ? "var(--shadow-frame)" : "none";
+    el.style.transition = "transform 0.6s cubic-bezier(0.2,0.8,0.2,1)";
+    el.style.transform = "translate(0px, 0px)";
   };
 
   return (
@@ -30,7 +26,7 @@ const Frame = ({ src, alt = "", ratio, matted = true, onClick, children }) => {
       padding: matted ? "14px 14px 18px" : 0,
       boxShadow: matted ? "var(--shadow-frame)" : "none",
       cursor: onClick ? "zoom-in" : "default",
-      transition: "transform 0.5s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.5s cubic-bezier(0.2,0.8,0.2,1)",
+      transition: "transform 0.6s cubic-bezier(0.2,0.8,0.2,1)",
       display: "inline-block",
       width: "100%",
       boxSizing: "border-box",

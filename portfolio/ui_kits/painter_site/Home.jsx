@@ -1,6 +1,6 @@
 // Home.jsx — Monograph edition (deepened, sole variant)
 const Home = ({ onNavigate }) => {
-  const hero = PAINTINGS[0];
+  const hero = PAINTINGS[Math.floor(Math.random() * PAINTINGS.length)];
   const plates = PAINTINGS.slice(0, 5);
   return (
     <div style={{ background: "var(--dark-1)", color: "var(--dark-on-1)" }}>
@@ -17,7 +17,7 @@ const Home = ({ onNavigate }) => {
         {/* Solid dark overlay — reliable legibility for text layer above */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(20,17,13,0.78) 0%, rgba(20,17,13,0.88) 45%, rgba(20,17,13,0.96) 80%, rgba(20,17,13,1) 100%)",
+          background: "linear-gradient(to bottom, rgba(20,17,13,0.38) 0%, rgba(20,17,13,0.52) 45%, rgba(20,17,13,0.82) 80%, rgba(20,17,13,1) 100%)",
           pointerEvents: "none", zIndex: 1,
         }} />
         <div style={{
@@ -47,7 +47,7 @@ const Home = ({ onNavigate }) => {
             margin: 0, color: "var(--dark-on-1)",
             fontVariationSettings: '"opsz" 144, "SOFT" 100',
           }}>
-            <em style={{ fontWeight: 300 }}>Minaei.</em>
+            <em style={{ fontWeight: 300 }}>Sumim.</em>
           </h1>
 
           <p style={{
@@ -64,7 +64,7 @@ const Home = ({ onNavigate }) => {
               fontFamily: "var(--font-body)", fontSize: 17, fontStyle: "italic",
               color: "var(--pigment-ochre)", textDecoration: "underline",
               textDecorationColor: "rgba(201,169,97,0.35)", textUnderlineOffset: "0.25em",
-            }}>Begin with no. 07 — <em>Candle, Veiled</em> →</a>
+            }}>Begin with no. {String(hero.number).padStart(2,"0")} — <em>{hero.title}</em> →</a>
           </div>
         </div>
 
@@ -204,7 +204,7 @@ const Home = ({ onNavigate }) => {
         padding: "120px 48px",
       }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
-          <img src="../../assets/paintings/candle-veil.jpg" alt="Brushwork detail" style={{
+          <img src="assets/paintings/candle-veil.jpg" alt="Brushwork detail" style={{
             width: "100%", boxShadow: "0 40px 80px -20px rgba(0,0,0,0.6)",
           }}/>
           <div>

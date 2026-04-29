@@ -63,6 +63,12 @@ const PAINTINGS = [
     square: "assets/paintings/monument-valley.jpg",
     available: false,
     note: "A landscape of the red sandstone formations of Monument Valley. The vastness of these rocks and the depth of the space between them — that's what drew me in.",
+    progress: [
+      "Sky first — blue laid in thin, deepening toward the top",
+      "Rock forms blocked in with raw sienna and burnt umber",
+      "Shadow faces deepened — violet glazed into the warm red",
+      "Foreground last — lighter and cooler, pulling the eye into the distance",
+    ],
   },
   {
     slug: "tree-on-rock",
@@ -80,6 +86,12 @@ const PAINTINGS = [
     square: "assets/paintings/tree-on-rock.jpg",
     available: false,
     note: "A lone tree on top of a rocky hill. Not out of necessity — as if it chose to be there and put down its roots.",
+    progress: [
+      "Sky laid in first — pale blue-grey, thin and even",
+      "Rock mass blocked in with raw umber and titanium white",
+      "Tree built up from the trunk — dark silhouette against the open sky",
+      "Final texture added with short broken strokes for bark and foliage",
+    ],
   },
   {
     slug: "statue",
@@ -120,6 +132,12 @@ const PAINTINGS = [
     square: "assets/paintings/sea-wildflowers.jpg",
     available: false,
     note: "A coastal landscape with wildflowers in the foreground. Blue sky, white clouds and a calm sea — a simple picture of a carefree day.",
+    progress: [
+      "Sky painted first — blue at the top, warm white toward the horizon",
+      "Sea and far shore in one flat soft stroke",
+      "Clouds shaped wet-into-wet before the sky dried",
+      "Wildflowers last — small dabs of colour, worked quickly before the light changed",
+    ],
   },
   {
     slug: "daisies-in-glass",
@@ -160,6 +178,12 @@ const PAINTINGS = [
     square: "assets/paintings/yellow-branches.jpg",
     available: false,
     note: "A still life of yellow-budded branches in an earthenware vase. The warmth of yellow against the cool background — two different moods in one frame.",
+    progress: [
+      "Warm ochre ground — laid flat and left to dry",
+      "Vase massed in first — the darkest darks established early",
+      "Branches painted one by one, each loaded with cadmium yellow",
+      "Background drifted from warm to cool in a single long pass with a wide brush",
+    ],
   },
 ];
 

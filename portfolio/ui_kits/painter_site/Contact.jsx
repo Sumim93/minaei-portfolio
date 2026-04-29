@@ -113,56 +113,70 @@ const PHOTO_SERIES = [
   },
 ];
 
-const Series = ({ onNavigate }) => (
-  <div style={{ background: "var(--paper-1)" }}>
-    <section style={{ padding: "96px 48px 72px" }}>
-      <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem, 6vw, 5.5rem)", fontWeight: 300, letterSpacing: "-0.035em", margin: 0, lineHeight: 1.02 }}>
-        Photographs — <em style={{ fontWeight: 300 }}>the world outside the studio.</em>
-      </h1>
-    </section>
+const Series = ({ onNavigate }) => {
+  const [lightbox, setLightbox] = React.useState(null);
 
-    {PHOTO_SERIES.map((s, i) => (
-      <section key={s.slug} style={{
-        padding: "80px 48px",
-        borderTop: "1px solid var(--border-soft)",
-        background: i % 2 === 1 ? "var(--paper-2)" : "transparent",
-      }}>
-        <div style={{ marginBottom: 48 }}>
-          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.2rem, 4vw, 3.8rem)", fontWeight: 300, fontStyle: "italic", margin: "0 0 16px", letterSpacing: "-0.025em" }}>
-            {s.title}
-          </h2>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontStyle: "italic", lineHeight: 1.6, color: "var(--ink-2)", margin: 0, maxWidth: 680 }}>
-            {s.description}
-          </p>
-        </div>
-
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: s.photos.length >= 4
-            ? "repeat(4, 1fr)"
-            : `repeat(${s.photos.length}, 1fr)`,
-          gap: 16,
-        }}>
-          {s.photos.map((n, j) => (
-            <div key={n} style={{
-              aspectRatio: j === 0 && s.photos.length >= 4 ? "3/4" : "2/3",
-              overflow: "hidden",
-              gridRow: j === 0 && s.photos.length >= 4 ? "span 2" : "auto",
-            }}>
-              <img
-                src={`assets/series/series-${n}.jpg`}
-                alt=""
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
-                onMouseOver={e => e.currentTarget.style.transform = "scale(1.03)"}
-                onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}
-              />
-            </div>
-          ))}
-        </div>
+  return (
+    <div style={{ background: "var(--paper-1)" }}>
+      <section style={{ padding: "96px 48px 72px" }}>
+        <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem, 6vw, 5.5rem)", fontWeight: 300, letterSpacing: "-0.035em", margin: 0, lineHeight: 1.02 }}>
+          Photographs — <em style={{ fontWeight: 300 }}>the world outside the studio.</em>
+        </h1>
       </section>
-    ))}
-  </div>
-);
+
+      {PHOTO_SERIES.map((s, i) => (
+        <section key={s.slug} style={{
+          padding: "80px 48px",
+          borderTop: "1px solid var(--border-soft)",
+          background: i % 2 === 1 ? "var(--paper-2)" : "transparent",
+        }}>
+          <div style={{ marginBottom: 48 }}>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.2rem, 4vw, 3.8rem)", fontWeight: 300, fontStyle: "italic", margin: "0 0 16px", letterSpacing: "-0.025em" }}>
+              {s.title}
+            </h2>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontStyle: "italic", lineHeight: 1.6, color: "var(--ink-2)", margin: 0, maxWidth: 680 }}>
+              {s.description}
+            </p>
+          </div>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: `repeat(${Math.min(s.photos.length, 4)}, 1fr)`,
+            gap: 16,
+            alignItems: "start",
+          }}>
+            {s.photos.map((n) => (
+              <div key={n} style={{ aspectRatio: "2/3", overflow: "hidden", cursor: "zoom-in" }}
+                onClick={() => setLightbox(`assets/series/series-${n}.jpg`)}>
+                <img
+                  src={`assets/series/series-${n}.jpg`}
+                  alt=""
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
+                  onMouseOver={e => e.currentTarget.style.transform = "scale(1.04)"}
+                  onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      {lightbox && (
+        <div onClick={() => setLightbox(null)} style={{
+          position: "fixed", inset: 0, background: "rgba(20,17,13,0.94)", zIndex: 100,
+          display: "flex", alignItems: "center", justifyContent: "center", padding: 48,
+          cursor: "zoom-out", backdropFilter: "blur(8px)",
+        }}>
+          <img src={lightbox} alt="" style={{ maxHeight: "90vh", maxWidth: "90vw", objectFit: "contain", boxShadow: "0 40px 80px rgba(0,0,0,0.5)" }}/>
+          <button onClick={() => setLightbox(null)} style={{
+            position: "absolute", top: 32, right: 32, background: "transparent", border: 0,
+            color: "var(--dark-on-1)", cursor: "pointer", fontSize: 28, lineHeight: 1,
+          }}>✕</button>
+        </div>
+      )}
+    </div>
+  );
+};
 
 window.Contact = Contact;
 window.Series = Series;

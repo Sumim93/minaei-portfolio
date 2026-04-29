@@ -74,7 +74,12 @@ const PaintingDetail = ({ painting, onNavigate }) => {
         <section style={{ padding: "96px 48px" }}>
           <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 24 }}>Closer · Brushwork detail</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
-            <img src={p.detail} alt="" style={{ width: "100%", display: "block", boxShadow: "var(--shadow-3)" }}/>
+            <div style={{ width: "100%", aspectRatio: "4/3", overflow: "hidden", boxShadow: "var(--shadow-3)", position: "relative" }}>
+              <img src={p.detail} alt="" style={{
+                width: "100%", height: "100%", objectFit: "cover", display: "block",
+                transform: "scale(2.6)", transformOrigin: "55% 38%",
+              }}/>
+            </div>
             <div>
               <h3 style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 300, fontStyle: "italic", margin: 0, letterSpacing: "-0.02em" }}>
                 How the paint sits.

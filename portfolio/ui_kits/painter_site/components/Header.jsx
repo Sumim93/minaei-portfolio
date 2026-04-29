@@ -60,13 +60,21 @@ const Header = ({ current = "works", onNavigate, variant = "light" }) => {
         </nav>
       )}
 
-      {/* Desktop right label */}
+      {/* Desktop right — Send a Note button */}
       {!isMobile && (
-        <div style={{
+        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate?.("contact"); }} style={{
           fontFamily: "var(--font-ui)", fontSize: 11,
           letterSpacing: "0.22em", textTransform: "uppercase",
-          color: "inherit", opacity: 0.6,
-        }}>Art by Sumi</div>
+          color: "inherit", textDecoration: "none",
+          border: "1px solid currentColor",
+          padding: "8px 18px",
+          borderRadius: 999,
+          opacity: 0.85,
+          transition: "opacity var(--dur-fast) var(--ease-out)",
+        }}
+        onMouseEnter={e => e.currentTarget.style.opacity = 1}
+        onMouseLeave={e => e.currentTarget.style.opacity = 0.85}
+        >Send a Note</a>
       )}
 
       {/* Mobile hamburger */}

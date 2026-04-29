@@ -10,9 +10,9 @@ const About = () => (
 
     <section style={{ padding: "0 48px 96px", display: "grid", gridTemplateColumns: "5fr 7fr", gap: 72, alignItems: "start" }}>
       <div>
-        <Frame src="assets/paintings/floral-shirt.jpg" alt="A recent portrait" matted={true}/>
+        <Frame src="assets/Profile.jpg" alt="Somaye Minaei" matted={true}/>
         <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 15, color: "var(--fg-muted)", marginTop: 14, textAlign: "center" }}>
-          From the studio — a recent portrait in progress.
+          Somaye Minaei — painter.
         </div>
       </div>
 

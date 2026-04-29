@@ -28,19 +28,13 @@ const About = () => {
 
         <div style={{ paddingTop: isMobile ? 0 : 20 }}>
           <p style={{ fontFamily: "'Lora', serif", fontSize: isMobile ? 20 : 24, fontStyle: "italic", lineHeight: 1.55, color: "var(--ink-1)", margin: 0 }}>
-            I paint to look more slowly. That is the whole of it — a portrait, for me, is just permission to keep looking at someone until they soften.
+            I paint to look more slowly — a portrait is my way of staying with someone until they soften.
           </p>
           <p style={{ fontFamily: "var(--font-body)", fontSize: 17, lineHeight: 1.7, color: "var(--ink-2)", marginTop: 32, maxWidth: 620 }}>
-            My name is Somaye Minaei. I sign my paintings <em>S. Minaei</em>. I was born in Iran and live now in Switzerland, where I paint in oil — mostly portraits, with the occasional landscape carried home from a walk, and small still lifes when a single colour asks to be looked at on its own.
+            I'm Somaye Minaei, a self-taught oil painter, born in Iran and now living in Switzerland. I learned by looking closely and returning to the canvas again and again, letting mistakes guide me forward.
           </p>
           <p style={{ fontFamily: "var(--font-body)", fontSize: 17, lineHeight: 1.7, color: "var(--ink-2)", marginTop: 20, maxWidth: 620 }}>
-            I am self-taught. There was no academy, no atelier — only years of looking at paintings I loved and trying, slowly, to understand how they were made. I taught myself in the way you teach yourself any patient thing: by getting it wrong, by sitting with the wrong, and by going back to the canvas the next morning.
-          </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 17, lineHeight: 1.7, color: "var(--ink-2)", marginTop: 20, maxWidth: 620 }}>
-            The portraits are the centre of the work. I build them in layers — a cool underpainting first, then warm half-tones, then the slow correction of the face over many sittings. I keep coming back to the same kind of question: what does a face look like once you have stopped trying to make it look like anyone in particular, and only painted what is in front of you?
-          </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 17, lineHeight: 1.7, color: "var(--ink-2)", marginTop: 20, maxWidth: 620 }}>
-            The landscapes are the rest in between. They are smaller, made faster, and carry the places I have been — a desert in the American southwest, a stretch of sea in the spring, the coast of a lake near home. I take them as breath between portraits.
+            My portraits are built in layers, beginning cool and gradually finding warmth over time, shaped through patience and repeated sittings. Between them, I paint small landscapes and quiet still moments from my walks and travels — simple pauses that carry a sense of place, light, and breath into everything I do.
           </p>
 
           {/* Timeline */}

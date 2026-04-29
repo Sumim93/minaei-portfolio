@@ -69,35 +69,31 @@ const Home = ({ onNavigate }) => {
         padding: isMobile ? "72px 20px" : "120px 48px",
         borderTop: "1px solid rgba(240,230,210,0.12)",
       }}>
-        <div style={{
-          maxWidth: 1200, margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "1fr 2fr",
-          gap: isMobile ? 32 : 96,
-          alignItems: "start",
-        }}>
-          {!isMobile && (
-            <div style={{ position: "sticky", top: 48 }}>
-              <div style={{ fontFamily: "'Caveat', cursive", fontSize: 38, color: "var(--pigment-sienna)", lineHeight: 1 }}>
-                S. Minaei
-              </div>
-            </div>
-          )}
-
-          <div>
-            {isMobile && (
-              <div style={{ fontFamily: "'Caveat', cursive", fontSize: 32, color: "var(--pigment-sienna)", marginBottom: 20 }}>S. Minaei</div>
-            )}
-            <p style={{
-              fontFamily: "'Lora', serif", fontSize: isMobile ? 19 : 24, lineHeight: 1.6,
-              fontStyle: "italic", fontWeight: 300, color: "var(--ink-1)",
-              margin: 0, maxWidth: 760,
-            }}>
-              I paint to look more slowly. A portrait, for me, is permission to keep looking at someone until they soften. This collection brings together works from the past few years — portraits that begin in cool tones and gradually find warmth, shaped through patient sittings, alongside landscapes captured from walks and travels, often started in a single afternoon and only finished in the studio when they truly earn it.
-            </p>
-
-            <div style={{ color: "var(--fg-subtle)", letterSpacing: "1.2em", fontSize: 12, marginTop: 48, textAlign: "center" }}>·   ·   ·</div>
+        <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
+          <div style={{
+            fontFamily: "'Caveat', cursive",
+            fontSize: isMobile ? 36 : 44,
+            color: "var(--pigment-sienna)",
+            lineHeight: 1,
+            marginBottom: isMobile ? 32 : 44,
+          }}>
+            S. Minaei
           </div>
+
+          <p style={{
+            fontFamily: "'Lora', serif",
+            fontSize: isMobile ? 19 : 24,
+            lineHeight: 1.65,
+            fontStyle: "italic",
+            fontWeight: 300,
+            color: "var(--ink-1)",
+            margin: "0 auto",
+            maxWidth: 760,
+          }}>
+            I paint to look more slowly. A portrait, for me, is permission to keep looking at someone until they soften. This collection brings together works from the past few years — portraits that begin in cool tones and gradually find warmth, shaped through patient sittings, alongside landscapes captured from walks and travels, often started in a single afternoon and only finished in the studio when they truly earn it.
+          </p>
+
+          <div style={{ color: "var(--fg-subtle)", letterSpacing: "1.2em", fontSize: 12, marginTop: 56 }}>·   ·   ·</div>
         </div>
       </section>
 

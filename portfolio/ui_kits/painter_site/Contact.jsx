@@ -57,8 +57,8 @@ const Contact = ({ prefill }) => {
         ) : (
           <form onSubmit={handleSubmit} style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 28 }}>
             {[
-              { k: "name", label: "Your name", placeholder: "Elena Morris", required: true },
-              { k: "email", label: "Email", placeholder: "elena@morris.studio", type: "email", required: true },
+              { k: "name", label: "Your name", placeholder: "Your full name", required: true },
+              { k: "email", label: "Email", placeholder: "your@email.com", type: "email", required: true },
             ].map(f => (
               <Field key={f.k} {...f}/>
             ))}

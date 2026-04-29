@@ -212,11 +212,18 @@ const Home = ({ onNavigate }) => {
       <section style={{ background: "var(--paper-1)", color: "var(--ink-1)", padding: "96px 0 80px", overflow: "hidden" }}>
         <style>{`
           @keyframes marquee {
-            0%   { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0%   { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
           }
-          .photo-strip { display: flex; animation: marquee 40s linear infinite; width: max-content; }
+          .photo-strip {
+            display: flex;
+            width: max-content;
+            animation: marquee 60s linear infinite;
+            will-change: transform;
+            backface-visibility: hidden;
+          }
           .photo-strip:hover { animation-play-state: paused; }
+          .strip-img { width: 220px; height: 300px; object-fit: cover; display: block; flex-shrink: 0; }
         `}</style>
 
         <div style={{ padding: "0 48px", marginBottom: 40, display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
@@ -229,21 +236,17 @@ const Home = ({ onNavigate }) => {
           <Button variant="link" onClick={() => onNavigate("series")}>View all →</Button>
         </div>
 
-        <div style={{ position: "relative" }}>
+        <div style={{ cursor: "pointer" }} onClick={() => onNavigate("series")}>
           <div className="photo-strip">
             {[...Array(31).keys()].concat([...Array(31).keys()]).map((i, idx) => (
-              <div key={idx} onClick={() => onNavigate("series")} style={{
-                flexShrink: 0, width: 220, height: 300, marginRight: 16,
-                overflow: "hidden", cursor: "pointer",
-              }}>
-                <img
-                  src={`assets/series/series-${i + 1}.jpg`}
-                  alt=""
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.4s ease" }}
-                  onMouseOver={e => e.currentTarget.style.transform = "scale(1.05)"}
-                  onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}
-                />
-              </div>
+              <img
+                key={idx}
+                src={`assets/series/series-${i + 1}.jpg`}
+                alt=""
+                className="strip-img"
+                loading="eager"
+                style={{ marginRight: 12 }}
+              />
             ))}
           </div>
         </div>

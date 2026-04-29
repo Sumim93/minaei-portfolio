@@ -178,36 +178,35 @@ const Home = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* ── 04 · A page from the October notes (quote + detail crop) ── */}
-      <section style={{
-        background: "var(--dark-2)", color: "var(--dark-on-1)",
-        padding: "120px 48px",
-      }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
-          <img src="assets/paintings/candle-veil.jpg" alt="Brushwork detail" style={{
-            width: "100%", boxShadow: "0 40px 80px -20px rgba(0,0,0,0.6)",
-          }}/>
-          <div>
-            <div style={{
-              fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
-              textTransform: "uppercase", color: "var(--pigment-ochre)", marginBottom: 28,
-            }}>III. From the October notes</div>
-            <blockquote style={{
-              fontFamily: "'Cormorant Garamond', serif", fontSize: 32, lineHeight: 1.45,
-              fontStyle: "italic", fontWeight: 300, color: "var(--dark-on-1)",
-              margin: 0,
-            }}>
-              <span style={{ color: "var(--pigment-ochre)", fontSize: 54, lineHeight: 0, verticalAlign: "-0.2em", marginRight: 4 }}>"</span>
-              The underpainting is cold — almost blue. Flesh tones are built up in glazes over three or four sittings; the whites come last, and only where the light catches.
-            </blockquote>
-            <div style={{
-              fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.28em",
-              textTransform: "uppercase", color: "var(--pigment-ochre)", marginTop: 36,
-              opacity: 0.7,
-            }}>— a page from the studio, late October</div>
-          </div>
-        </div>
-      </section>
+      {/* ── 04 · Notes from my paintings ─────────────────────────── */}
+      {(() => {
+        const withNotes = PAINTINGS.filter(p => p.note);
+        const noted = withNotes[Math.floor(Math.random() * withNotes.length)];
+        return (
+          <section style={{ background: "var(--dark-2)", color: "var(--dark-on-1)", padding: "120px 48px" }}>
+            <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+              <img src={noted.image} alt={noted.title} style={{ width: "100%", boxShadow: "0 40px 80px -20px rgba(0,0,0,0.6)" }}/>
+              <div>
+                <div style={{
+                  fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
+                  textTransform: "uppercase", color: "var(--pigment-ochre)", marginBottom: 28,
+                }}>Notes from my paintings</div>
+                <blockquote style={{
+                  fontFamily: "'Cormorant Garamond', serif", fontSize: 28, lineHeight: 1.55,
+                  fontStyle: "italic", fontWeight: 300, color: "var(--dark-on-1)", margin: 0,
+                }}>
+                  <span style={{ color: "var(--pigment-ochre)", fontSize: 54, lineHeight: 0, verticalAlign: "-0.2em", marginRight: 4 }}>"</span>
+                  {noted.note}
+                </blockquote>
+                <div style={{
+                  fontFamily: "var(--font-display)", fontSize: 22, fontStyle: "italic",
+                  color: "var(--pigment-ochre)", marginTop: 36, opacity: 0.85,
+                }}>— {noted.title}, {noted.year}</div>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ── 05 · Series photo strip ───────────────────────────────── */}
       <section style={{ background: "var(--paper-1)", color: "var(--ink-1)", padding: "96px 0 80px", overflow: "hidden" }}>

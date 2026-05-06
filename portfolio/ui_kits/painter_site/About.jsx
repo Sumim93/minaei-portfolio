@@ -1,8 +1,22 @@
 // About.jsx — editorial bio + photo layout
-const { motion } = window.FramerMotion;
-
 const About = () => {
   const { isMobile, isTablet } = useBreakpoint();
+  const imgCol  = useReveal({ y: 0, duration: 0.8, delay: 0.1 });
+  const textCol = useReveal({ y: 0, duration: 0.8, delay: 0.22 });
+
+  // On desktop: slide in from sides; on mobile: just fade up
+  const imgStyle = {
+    ...imgCol.style,
+    transform: imgCol.style.opacity === 0
+      ? (isMobile ? "translateY(32px)" : "translateX(-36px)")
+      : "translate(0,0)",
+  };
+  const textStyle = {
+    ...textCol.style,
+    transform: textCol.style.opacity === 0
+      ? (isMobile ? "translateY(32px)" : "translateX(36px)")
+      : "translate(0,0)",
+  };
 
   return (
     <div style={{ background: "var(--paper-1)" }}>
@@ -18,11 +32,7 @@ const About = () => {
         alignItems: "center",
       }}>
         {/* Image */}
-        <motion.div
-          initial={{ opacity: 0, x: isMobile ? 0 : -36 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
-        >
+        <div ref={imgCol.ref} style={imgStyle}>
           <Frame src="assets/Profile.jpg" alt="Somaye Minaei" matted={true}/>
           <div style={{
             fontFamily: "'Lora', serif", fontStyle: "italic",
@@ -31,14 +41,10 @@ const About = () => {
           }}>
             Somaye Minaei — painter.
           </div>
-        </motion.div>
+        </div>
 
         {/* Text */}
-        <motion.div
-          initial={{ opacity: 0, x: isMobile ? 0 : 36 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.22, ease: [0.2, 0.8, 0.2, 1] }}
-        >
+        <div ref={textCol.ref} style={textStyle}>
           <div style={{
             fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
             textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 32,
@@ -81,7 +87,7 @@ const About = () => {
               lineHeight: 1,
             }}>S. Minaei</div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
     </div>

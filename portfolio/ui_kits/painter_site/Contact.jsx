@@ -1,5 +1,4 @@
 // Contact.jsx & Series.jsx
-const { motion, AnimatePresence } = window.FramerMotion;
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvzlpplq";
 
 const Contact = ({ prefill }) => {
@@ -8,6 +7,9 @@ const Contact = ({ prefill }) => {
   const [submitting, setSubmitting] = React.useState(false);
   const [error, setError] = React.useState(null);
   const px = isMobile ? "20px" : "48px";
+
+  const hdr   = useReveal({ y: 28, duration: 0.65 });
+  const form  = useReveal({ y: 24, duration: 0.6, delay: 0.1 });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,24 +38,9 @@ const Contact = ({ prefill }) => {
     }
   };
 
-  const fieldVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.2, 0.8, 0.2, 1] } },
-  };
-
-  const formVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
-  };
-
   return (
     <div style={{ background: "var(--paper-1)" }}>
-      <motion.section
-        initial={{ opacity: 0, y: 28 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.65, ease: [0.2, 0.8, 0.2, 1] }}
-        style={{ padding: isMobile ? "64px 20px 36px" : "96px 48px 48px", maxWidth: 900, margin: "0 auto" }}
-      >
+      <section ref={hdr.ref} style={{ ...hdr.style, padding: isMobile ? "64px 20px 36px" : "96px 48px 48px", maxWidth: 900, margin: "0 auto" }}>
         <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 24 }}>Write to me</div>
         <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 5vw, 4.5rem)", fontWeight: 300, letterSpacing: "-0.03em", margin: 0, lineHeight: 1.05 }}>
           For commissions, studio visits,<br/><em style={{ fontWeight: 300 }}>or a slow reply about painting.</em>
@@ -61,76 +48,51 @@ const Contact = ({ prefill }) => {
         <p style={{ fontFamily: "'Lora', serif", fontSize: isMobile ? 18 : 21, fontStyle: "italic", lineHeight: 1.55, color: "var(--ink-2)", marginTop: 28, maxWidth: 600 }}>
           I read everything that arrives, and I reply within a week — usually less. Tell me what you're looking at, and what you'd like to know.
         </p>
-      </motion.section>
+      </section>
 
       <section style={{ padding: isMobile ? "24px 20px 64px" : "32px 48px 96px", maxWidth: 900, margin: "0 auto" }}>
-        <AnimatePresence exitBeforeEnter>
-          {sent ? (
-            <motion.div
-              key="success"
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
-              style={{ padding: isMobile ? "48px 24px" : "64px 48px", background: "var(--paper-2)", textAlign: "center" }}
-            >
-              <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--pigment-sienna)", marginBottom: 16 }}>Thank you</div>
-              <h2 style={{ fontFamily: "var(--font-display)", fontSize: 40, fontStyle: "italic", fontWeight: 300, margin: 0, color: "var(--ink-1)" }}>Your note is on its way.</h2>
-              <p style={{ fontFamily: "'Lora', serif", fontSize: 18, fontStyle: "italic", color: "var(--fg-muted)", marginTop: 16 }}>I'll write back soon — likely after Wednesday, after the October sitting ends.</p>
-            </motion.div>
-          ) : (
-            <motion.form
-              key="form"
-              variants={formVariants}
-              initial="hidden"
-              animate="visible"
-              onSubmit={handleSubmit}
-              style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 28 }}
-            >
-              {[
-                { k: "name", label: "Your name", placeholder: "Your full name", required: true },
-                { k: "email", label: "Email", placeholder: "your@email.com", type: "email", required: true },
-              ].map(f => (
-                <motion.div key={f.k} variants={fieldVariants}>
-                  <Field k={f.k} label={f.label} placeholder={f.placeholder} type={f.type} required={f.required} />
-                </motion.div>
-              ))}
-              <motion.div variants={fieldVariants} style={{ gridColumn: "1/-1" }}>
-                <Field k="interest" label="Interested in" placeholder={prefill?.title || "A commission, a studio visit, or a specific work"} boxed defaultValue={prefill ? `${prefill.title}, ${prefill.year}` : ""} />
-              </motion.div>
-              <motion.div variants={fieldVariants} style={{ gridColumn: "1/-1" }}>
-                <FieldArea k="note" label="Your note" placeholder="Tell me what you're looking at." required />
-              </motion.div>
+        {sent ? (
+          <div ref={form.ref} style={{
+            ...form.style,
+            padding: isMobile ? "48px 24px" : "64px 48px",
+            background: "var(--paper-2)", textAlign: "center",
+          }}>
+            <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--pigment-sienna)", marginBottom: 16 }}>Thank you</div>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 40, fontStyle: "italic", fontWeight: 300, margin: 0, color: "var(--ink-1)" }}>Your note is on its way.</h2>
+            <p style={{ fontFamily: "'Lora', serif", fontSize: 18, fontStyle: "italic", color: "var(--fg-muted)", marginTop: 16 }}>I'll write back soon — likely after Wednesday, after the October sitting ends.</p>
+          </div>
+        ) : (
+          <form ref={form.ref} style={{ ...form.style, display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 28 }} onSubmit={handleSubmit}>
+            {[
+              { k: "name", label: "Your name", placeholder: "Your full name", required: true },
+              { k: "email", label: "Email", placeholder: "your@email.com", type: "email", required: true },
+            ].map(f => (
+              <Field key={f.k} {...f}/>
+            ))}
+            <Field k="interest" label="Interested in" placeholder={prefill?.title || "A commission, a studio visit, or a specific work"} boxed defaultValue={prefill ? `${prefill.title}, ${prefill.year}` : ""} style={{ gridColumn: "1/-1" }}/>
+            <FieldArea k="note" label="Your note" placeholder="Tell me what you're looking at." required style={{ gridColumn: "1/-1" }}/>
 
-              {error && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  style={{
-                    gridColumn: "1/-1",
-                    fontFamily: "'Lora', serif", fontStyle: "italic", fontSize: 15,
-                    color: "var(--pigment-sienna)",
-                    background: "var(--paper-2)",
-                    padding: "14px 18px",
-                    borderLeft: "2px solid var(--pigment-sienna)",
-                  }}
-                >{error}</motion.div>
-              )}
+            {error && (
+              <div style={{
+                gridColumn: "1/-1",
+                fontFamily: "'Lora', serif", fontStyle: "italic", fontSize: 15,
+                color: "var(--pigment-sienna)",
+                background: "var(--paper-2)",
+                padding: "14px 18px",
+                borderLeft: "2px solid var(--pigment-sienna)",
+              }}>{error}</div>
+            )}
 
-              <motion.div
-                variants={fieldVariants}
-                style={{ gridColumn: "1/-1", display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? 20 : 0, marginTop: 16, borderTop: "1px solid var(--border-soft)", paddingTop: 24 }}
-              >
-                <div style={{ fontFamily: "'Lora', serif", fontStyle: "italic", fontSize: 15, color: "var(--fg-muted)" }}>
-                  Or, write directly — <a href="mailto:s.minaei1993@gmail.com" style={{ color: "var(--pigment-umber)" }}>s.minaei1993@gmail.com</a>
-                </div>
-                <Button variant="primary" type="submit" disabled={submitting} onClick={() => {}}>
-                  {submitting ? "Sending…" : "Send the note"}
-                </Button>
-              </motion.div>
-            </motion.form>
-          )}
-        </AnimatePresence>
+            <div style={{ gridColumn: "1/-1", display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? 20 : 0, marginTop: 16, borderTop: "1px solid var(--border-soft)", paddingTop: 24 }}>
+              <div style={{ fontFamily: "'Lora', serif", fontStyle: "italic", fontSize: 15, color: "var(--fg-muted)" }}>
+                Or, write directly — <a href="mailto:s.minaei1993@gmail.com" style={{ color: "var(--pigment-umber)" }}>s.minaei1993@gmail.com</a>
+              </div>
+              <Button variant="primary" type="submit" disabled={submitting} onClick={() => {}}>
+                {submitting ? "Sending…" : "Send the note"}
+              </Button>
+            </div>
+          </form>
+        )}
       </section>
     </div>
   );
@@ -208,37 +170,28 @@ const PHOTO_SERIES = [
 const Series = ({ onNavigate }) => {
   const { isMobile, isTablet } = useBreakpoint();
   const [lightbox, setLightbox] = React.useState(null);
+  const hdr = useReveal({ y: 28, duration: 0.65 });
 
   return (
     <div style={{ background: "var(--paper-1)" }}>
-      <motion.section
-        initial={{ opacity: 0, y: 28 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.65 }}
-        style={{ padding: isMobile ? "64px 20px 48px" : "96px 48px 72px" }}
-      >
+      <section ref={hdr.ref} style={{ ...hdr.style, padding: isMobile ? "64px 20px 48px" : "96px 48px 72px" }}>
         <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 6vw, 5.5rem)", fontWeight: 300, letterSpacing: "-0.035em", margin: 0, lineHeight: 1.02 }}>
           Photographs — <em style={{ fontWeight: 300 }}>the world outside the studio.</em>
         </h1>
-      </motion.section>
+      </section>
 
       {PHOTO_SERIES.map((s, i) => {
         const cols = isMobile
           ? Math.min(s.photos.length, 2)
           : Math.min(s.photos.length, 4);
+        const secReveal = useReveal({ y: 36, duration: 0.65 });
         return (
-          <motion.section
-            key={s.slug}
-            initial={{ opacity: 0, y: 36 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.65, ease: [0.2, 0.8, 0.2, 1] }}
-            style={{
-              padding: isMobile ? "56px 20px" : "80px 48px",
-              borderTop: "1px solid var(--border-soft)",
-              background: i % 2 === 1 ? "var(--paper-2)" : "transparent",
-            }}
-          >
+          <section key={s.slug} ref={secReveal.ref} style={{
+            ...secReveal.style,
+            padding: isMobile ? "56px 20px" : "80px 48px",
+            borderTop: "1px solid var(--border-soft)",
+            background: i % 2 === 1 ? "var(--paper-2)" : "transparent",
+          }}>
             <div style={{ marginBottom: isMobile ? 28 : 48 }}>
               <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 3.8rem)", fontWeight: 300, fontStyle: "italic", margin: "0 0 16px", letterSpacing: "-0.025em" }}>
                 {s.title}
@@ -267,7 +220,7 @@ const Series = ({ onNavigate }) => {
                 </div>
               ))}
             </div>
-          </motion.section>
+          </section>
         );
       })}
 

@@ -1,4 +1,6 @@
 // PaintingDetail.jsx — big image + notes + technical info
+const { motion } = window.FramerMotion;
+
 const PaintingDetail = ({ painting, onNavigate }) => {
   const { isMobile } = useBreakpoint();
   const p = painting || PAINTINGS[0];
@@ -11,12 +13,17 @@ const PaintingDetail = ({ painting, onNavigate }) => {
   return (
     <div style={{ background: "var(--paper-1)" }}>
       {/* Breadcrumb */}
-      <div style={{ padding: `32px ${px} 0`, fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-muted)" }}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4 }}
+        style={{ padding: `32px ${px} 0`, fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-muted)" }}
+      >
         <a href="#" onClick={e => { e.preventDefault(); onNavigate("works"); }} style={{ color: "inherit", textDecoration: "none" }}>← Works</a>
         <span style={{ margin: "0 14px" }}>·</span>
         <span>{p.series}</span>
         {!isMobile && <><span style={{ margin: "0 14px" }}>·</span><span>№ {String(p.number).padStart(2, "0")}</span></>}
-      </div>
+      </motion.div>
 
       {/* Hero image + caption */}
       <section style={{
@@ -26,8 +33,20 @@ const PaintingDetail = ({ painting, onNavigate }) => {
         gap: isMobile ? 36 : 72,
         alignItems: "start",
       }}>
-        <Frame src={p.image} alt={p.title} onClick={() => setZoomed(true)} />
-        <div style={{ position: isMobile ? "static" : "sticky", top: 48, paddingTop: isMobile ? 0 : 20 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
+        >
+          <Frame src={p.image} alt={p.title} onClick={() => setZoomed(true)} />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: isMobile ? 0 : 28 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.75, delay: 0.22, ease: [0.2, 0.8, 0.2, 1] }}
+          style={{ position: isMobile ? "static" : "sticky", top: 48, paddingTop: isMobile ? 0 : 20 }}
+        >
           <div style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 16 }}>
             № {String(p.number).padStart(2, "0")} · {p.subject}
           </div>
@@ -55,12 +74,18 @@ const PaintingDetail = ({ painting, onNavigate }) => {
           <div style={{ marginTop: 36 }}>
             <Button variant="ghost" onClick={() => setZoomed(true)}>View full painting ↗</Button>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* The note */}
       {p.note ? (
-        <section style={{ padding: isMobile ? "64px 20px" : "96px 48px", background: "var(--paper-2)" }}>
+        <motion.section
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
+          style={{ padding: isMobile ? "64px 20px" : "96px 48px", background: "var(--paper-2)" }}
+        >
           <div style={{ maxWidth: 680, margin: "0 auto" }}>
             <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 24 }}>The note</div>
             <p style={{ fontFamily: "'Lora', serif", fontSize: isMobile ? 19 : 22, fontStyle: "italic", lineHeight: 1.55, color: "var(--ink-1)", margin: 0 }}>
@@ -70,12 +95,18 @@ const PaintingDetail = ({ painting, onNavigate }) => {
               — S. Minaei
             </div>
           </div>
-        </section>
+        </motion.section>
       ) : null}
 
       {/* Brushwork detail */}
       {p.detail && (
-        <section style={{ padding: isMobile ? "64px 20px" : "96px 48px" }}>
+        <motion.section
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
+          style={{ padding: isMobile ? "64px 20px" : "96px 48px" }}
+        >
           <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 24 }}>Closer · Brushwork detail</div>
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 36 : 48, alignItems: "center" }}>
             <div style={{ width: "100%", aspectRatio: "4/3", overflow: "hidden", boxShadow: "var(--shadow-3)", position: "relative" }}>
@@ -102,11 +133,17 @@ const PaintingDetail = ({ painting, onNavigate }) => {
               )}
             </div>
           </div>
-        </section>
+        </motion.section>
       )}
 
       {/* Prev / next */}
-      <section style={{ padding: isMobile ? "48px 20px" : "64px 48px", borderTop: "1px solid var(--border-soft)", display: "grid", gridTemplateColumns: "1fr 1fr", gap: isMobile ? 24 : 48 }}>
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        style={{ padding: isMobile ? "48px 20px" : "64px 48px", borderTop: "1px solid var(--border-soft)", display: "grid", gridTemplateColumns: "1fr 1fr", gap: isMobile ? 24 : 48 }}
+      >
         <a href="#" onClick={e => { e.preventDefault(); onNavigate("painting", prev); }} style={{ textDecoration: "none" }}>
           <div style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 10 }}>← Previous</div>
           <div style={{ fontFamily: "var(--font-display)", fontSize: isMobile ? 20 : 28, fontStyle: "italic", fontWeight: 300, color: "var(--ink-1)" }}>{prev.title}</div>
@@ -115,7 +152,7 @@ const PaintingDetail = ({ painting, onNavigate }) => {
           <div style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 10 }}>Next →</div>
           <div style={{ fontFamily: "var(--font-display)", fontSize: isMobile ? 20 : 28, fontStyle: "italic", fontWeight: 300, color: "var(--ink-1)" }}>{next.title}</div>
         </a>
-      </section>
+      </motion.section>
 
       {/* Lightbox */}
       {zoomed && (

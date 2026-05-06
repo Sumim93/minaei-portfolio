@@ -1,4 +1,6 @@
 // About.jsx — editorial bio + photo layout
+const { motion } = window.FramerMotion;
+
 const About = () => {
   const { isMobile, isTablet } = useBreakpoint();
 
@@ -16,7 +18,11 @@ const About = () => {
         alignItems: "center",
       }}>
         {/* Image */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: isMobile ? 0 : -36 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
+        >
           <Frame src="assets/Profile.jpg" alt="Somaye Minaei" matted={true}/>
           <div style={{
             fontFamily: "'Lora', serif", fontStyle: "italic",
@@ -25,10 +31,14 @@ const About = () => {
           }}>
             Somaye Minaei — painter.
           </div>
-        </div>
+        </motion.div>
 
         {/* Text */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: isMobile ? 0 : 36 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.22, ease: [0.2, 0.8, 0.2, 1] }}
+        >
           <div style={{
             fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.3em",
             textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 32,
@@ -71,7 +81,7 @@ const About = () => {
               lineHeight: 1,
             }}>S. Minaei</div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
     </div>

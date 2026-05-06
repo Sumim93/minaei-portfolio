@@ -15,14 +15,13 @@ const PAINTINGS = [
     thumb: "assets/paintings-thumb/floral-shirt.jpg",
     detail: "assets/paintings/floral-shirt.jpg",
     square: "assets/paintings/floral-shirt.jpg",
+    details: [
+      "assets/paintings-detail/floral-shirt-1.jpg",
+      "assets/paintings-detail/floral-shirt-2.jpg",
+      "assets/paintings-detail/floral-shirt-3.jpg",
+    ],
     available: false,
     note: "A portrait of a woman in a floral blue dress. The moment when someone drifts into their own thoughts — a gaze that is present, but a mind that is somewhere else.",
-    progress: [
-      "Grisaille underpainting for the face",
-      "Warm mid-tones in the hair and skin",
-      "Dress painted wet-into-wet in a single session",
-      "Floral pattern last — tiny marks, no drawing",
-    ],
   },
   {
     slug: "candle-veil",
@@ -38,14 +37,13 @@ const PAINTINGS = [
     thumb: "assets/paintings-thumb/candle-veil.jpg",
     detail: "assets/paintings/candle-veil.jpg",
     square: "assets/paintings/candle-veil.jpg",
+    details: [
+      "assets/paintings-detail/candle-veil-1.jpg",
+      "assets/paintings-detail/candle-veil-2.jpg",
+      "assets/paintings-detail/candle-veil-3.jpg",
+    ],
     available: false,
     note: "A portrait of a young girl in the warm glow of a candle. What I was after in this piece was the play of light and shadow — a small flame pulling a face out of the darkness, creating a feeling somewhere between calm and unease.",
-    progress: [
-      "Dark ground — ivory black thinned with walnut oil",
-      "Warm underpainting — burnt sienna and yellow ochre on the lit side",
-      "Cool shadow — ultramarine glazed into the brown",
-      "Flame last — lead white over a single transparent yellow",
-    ],
   },
   {
     slug: "monument-valley",
@@ -61,14 +59,13 @@ const PAINTINGS = [
     thumb: "assets/paintings-thumb/monument-valley.jpg",
     detail: "assets/paintings/monument-valley.jpg",
     square: "assets/paintings/monument-valley.jpg",
+    details: [
+      "assets/paintings-detail/monument-valley-1.jpg",
+      "assets/paintings-detail/monument-valley-2.jpg",
+      "assets/paintings-detail/monument-valley-3.jpg",
+    ],
     available: false,
     note: "A landscape of the red sandstone formations of Monument Valley. The vastness of these rocks and the depth of the space between them — that's what drew me in.",
-    progress: [
-      "Sky first — blue laid in thin, deepening toward the top",
-      "Rock forms blocked in with raw sienna and burnt umber",
-      "Shadow faces deepened — violet glazed into the warm red",
-      "Foreground last — lighter and cooler, pulling the eye into the distance",
-    ],
   },
   {
     slug: "tree-on-rock",
@@ -84,14 +81,13 @@ const PAINTINGS = [
     thumb: "assets/paintings-thumb/tree-on-rock.jpg",
     detail: "assets/paintings/tree-on-rock.jpg",
     square: "assets/paintings/tree-on-rock.jpg",
+    details: [
+      "assets/paintings-detail/tree-on-rock-1.jpg",
+      "assets/paintings-detail/tree-on-rock-2.jpg",
+      "assets/paintings-detail/tree-on-rock-3.jpg",
+    ],
     available: false,
     note: "A lone tree on top of a rocky hill. Not out of necessity — as if it chose to be there and put down its roots.",
-    progress: [
-      "Sky laid in first — pale blue-grey, thin and even",
-      "Rock mass blocked in with raw umber and titanium white",
-      "Tree built up from the trunk — dark silhouette against the open sky",
-      "Final texture added with short broken strokes for bark and foliage",
-    ],
   },
   {
     slug: "statue",
@@ -107,14 +103,13 @@ const PAINTINGS = [
     thumb: "assets/paintings-thumb/statue.jpg",
     detail: "assets/paintings/statue.jpg",
     square: "assets/paintings/statue.jpg",
+    details: [
+      "assets/paintings-detail/statue-1.jpg",
+      "assets/paintings-detail/statue-2.jpg",
+      "assets/paintings-detail/statue-3.jpg",
+    ],
     available: false,
     note: "A painting of a classical female bust. The precise light and shadow on the stone surface blurs the line between painting and sculpture.",
-    progress: [
-      "Cool grey ground — ivory black and titanium white",
-      "Mass of the head blocked in with raw umber",
-      "Half-tones built up in cool greys and warm whites",
-      "Final shadows kept transparent — a single glaze of umber",
-    ],
   },
   {
     slug: "sea-wildflowers",
@@ -130,14 +125,13 @@ const PAINTINGS = [
     thumb: "assets/paintings-thumb/sea-wildflowers.jpg",
     detail: "assets/paintings/sea-wildflowers.jpg",
     square: "assets/paintings/sea-wildflowers.jpg",
+    details: [
+      "assets/paintings-detail/sea-wildflowers-1.jpg",
+      "assets/paintings-detail/sea-wildflowers-2.jpg",
+      "assets/paintings-detail/sea-wildflowers-3.jpg",
+    ],
     available: false,
     note: "A coastal landscape with wildflowers in the foreground. Blue sky, white clouds and a calm sea — a simple picture of a carefree day.",
-    progress: [
-      "Sky painted first — blue at the top, warm white toward the horizon",
-      "Sea and far shore in one flat soft stroke",
-      "Clouds shaped wet-into-wet before the sky dried",
-      "Wildflowers last — small dabs of colour, worked quickly before the light changed",
-    ],
   },
   {
     slug: "daisies-in-glass",
@@ -153,14 +147,13 @@ const PAINTINGS = [
     thumb: "assets/paintings-thumb/daisies.jpg",
     detail: "assets/paintings/daisies.JPG",
     square: "assets/paintings/daisies.JPG",
+    details: [
+      "assets/paintings-detail/daisies-1.jpg",
+      "assets/paintings-detail/daisies-2.jpg",
+      "assets/paintings-detail/daisies-3.jpg",
+    ],
     available: false,
     note: "Three daisies in a simple glass bottle. Sometimes the simplest things, when truly seen, are enough.",
-    progress: [
-      "Teal ground — laid flat and left to dry",
-      "Glass bottle first — the transparency built up in thin layers",
-      "Stems painted through the glass, slightly shifted and greyed",
-      "Daisies last — white over white, each petal shaped with a single stroke",
-    ],
   },
   {
     slug: "yellow-branches",
@@ -176,14 +169,13 @@ const PAINTINGS = [
     thumb: "assets/paintings-thumb/yellow-branches.jpg",
     detail: "assets/paintings/yellow-branches.jpg",
     square: "assets/paintings/yellow-branches.jpg",
+    details: [
+      "assets/paintings-detail/yellow-branches-1.jpg",
+      "assets/paintings-detail/yellow-branches-2.jpg",
+      "assets/paintings-detail/yellow-branches-3.jpg",
+    ],
     available: false,
     note: "A still life of yellow-budded branches in an earthenware vase. The warmth of yellow against the cool background — two different moods in one frame.",
-    progress: [
-      "Warm ochre ground — laid flat and left to dry",
-      "Vase massed in first — the darkest darks established early",
-      "Branches painted one by one, each loaded with cadmium yellow",
-      "Background drifted from warm to cool in a single long pass with a wide brush",
-    ],
   },
 ];
 

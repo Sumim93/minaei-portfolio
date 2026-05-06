@@ -89,34 +89,32 @@ const PaintingDetail = ({ painting, onNavigate }) => {
         </section>
       ) : null}
 
-      {/* Brushwork detail */}
-      {p.detail && (
+      {/* Brushwork detail — 3 close-up images */}
+      {p.details && p.details.length > 0 && (
         <section ref={brushRef.ref} style={{ ...brushRef.style, padding: isMobile ? "64px 20px" : "96px 48px" }}>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 24 }}>Closer · Brushwork detail</div>
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 36 : 48, alignItems: "center" }}>
-            <div style={{ width: "100%", aspectRatio: "4/3", overflow: "hidden", boxShadow: "var(--shadow-3)", position: "relative" }}>
-              <img src={p.detail} alt="" style={{
-                width: "100%", height: "100%", objectFit: "cover", display: "block",
-                transform: "scale(2.6)", transformOrigin: "55% 38%",
-              }}/>
-            </div>
-            <div>
-              <h3 style={{ fontFamily: "var(--font-display)", fontSize: isMobile ? 28 : 36, fontWeight: 300, fontStyle: "italic", margin: 0, letterSpacing: "-0.02em" }}>
-                How the paint sits.
-              </h3>
-              {p.progress && (
-                <ol style={{ listStyle: "none", padding: 0, margin: "32px 0 0", counterReset: "step" }}>
-                  {p.progress.map((step, i) => (
-                    <li key={i} style={{ display: "grid", gridTemplateColumns: "40px 1fr", gap: 16, padding: "14px 0", borderTop: "1px solid var(--border-soft)" }}>
-                      <span style={{ fontFamily: "var(--font-display)", fontSize: 22, fontStyle: "italic", color: "var(--pigment-sienna)" }}>
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span style={{ fontFamily: "var(--font-body)", fontSize: 16, color: "var(--ink-1)", lineHeight: 1.5 }}>{step}</span>
-                    </li>
-                  ))}
-                </ol>
-              )}
-            </div>
+          <div style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: isMobile ? 32 : 48 }}>
+            Closer · Brushwork detail
+          </div>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
+            gap: isMobile ? 20 : 28,
+          }}>
+            {p.details.map((src, i) => (
+              <div key={i} style={{ overflow: "hidden", boxShadow: "var(--shadow-frame)" }}>
+                <img
+                  src={src}
+                  alt={`${p.title} — detail ${i + 1}`}
+                  style={{
+                    width: "100%", display: "block", aspectRatio: "1/1",
+                    objectFit: "cover",
+                    transition: "transform 0.8s cubic-bezier(0.2,0.8,0.2,1)",
+                  }}
+                  onMouseOver={e => e.currentTarget.style.transform = "scale(1.05)"}
+                  onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}
+                />
+              </div>
+            ))}
           </div>
         </section>
       )}

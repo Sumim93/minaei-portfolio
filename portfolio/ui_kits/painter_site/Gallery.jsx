@@ -12,6 +12,7 @@ const Gallery = ({ onNavigate }) => {
   const filtered = filter === "all" ? PAINTINGS : PAINTINGS.filter(p => p.subject === filter);
   const cols = isMobile ? "1fr" : isTablet ? "repeat(2, 1fr)" : "repeat(3, 1fr)";
 
+  // useReveal only at top level — never inside a loop
   const hdr = useReveal({ y: 28, duration: 0.65 });
 
   const handleFilter = (key) => {
@@ -21,6 +22,13 @@ const Gallery = ({ onNavigate }) => {
 
   return (
     <div style={{ background: "var(--paper-1)" }}>
+      <style>{`
+        @keyframes cardFadeUp {
+          from { opacity: 0; transform: translateY(36px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+
       <section ref={hdr.ref} style={{
         ...hdr.style,
         padding: isMobile ? "64px 20px 36px" : "80px 48px 48px",
@@ -49,14 +57,13 @@ const Gallery = ({ onNavigate }) => {
           key={animKey}
           style={{ display: "grid", gridTemplateColumns: cols, gap: isMobile ? 48 : 56, rowGap: isMobile ? 56 : 80 }}
         >
-          {filtered.map((p, i) => {
-            const card = useReveal({ y: 36, duration: 0.6, delay: Math.min(i, 5) * 0.07 });
-            return (
-              <div key={p.slug} ref={card.ref} style={card.style}>
-                <PaintingCard painting={p} onClick={() => onNavigate("painting", p)} />
-              </div>
-            );
-          })}
+          {filtered.map((p, i) => (
+            <div key={p.slug} style={{
+              animation: `cardFadeUp 0.6s cubic-bezier(0.2,0.8,0.2,1) ${Math.min(i, 5) * 0.07}s both`,
+            }}>
+              <PaintingCard painting={p} onClick={() => onNavigate("painting", p)} />
+            </div>
+          ))}
         </div>
       </section>
     </div>

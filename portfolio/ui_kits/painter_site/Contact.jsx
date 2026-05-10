@@ -174,6 +174,7 @@ const Series = ({ onNavigate }) => {
 
   return (
     <div style={{ background: "var(--paper-1)" }}>
+      <style>{`@keyframes fadeUp { from { opacity:0; transform:translateY(36px); } to { opacity:1; transform:translateY(0); } }`}</style>
       <section ref={hdr.ref} style={{ ...hdr.style, padding: isMobile ? "64px 20px 48px" : "96px 48px 72px" }}>
         <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 6vw, 5.5rem)", fontWeight: 300, letterSpacing: "-0.035em", margin: 0, lineHeight: 1.02 }}>
           Photographs — <em style={{ fontWeight: 300 }}>the world outside the studio.</em>
@@ -184,10 +185,9 @@ const Series = ({ onNavigate }) => {
         const cols = isMobile
           ? Math.min(s.photos.length, 2)
           : Math.min(s.photos.length, 4);
-        const secReveal = useReveal({ y: 36, duration: 0.65 });
         return (
-          <section key={s.slug} ref={secReveal.ref} style={{
-            ...secReveal.style,
+          <section key={s.slug} style={{
+            animation: `fadeUp 0.65s cubic-bezier(0.2,0.8,0.2,1) ${i * 0.08}s both`,
             padding: isMobile ? "56px 20px" : "80px 48px",
             borderTop: "1px solid var(--border-soft)",
             background: i % 2 === 1 ? "var(--paper-2)" : "transparent",

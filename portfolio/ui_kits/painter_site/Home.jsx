@@ -171,10 +171,9 @@ const Home = ({ onNavigate }) => {
           <div style={{ display: "flex", flexDirection: "column", gap: isMobile ? 64 : 120 }}>
             {plates.map((p, i) => {
               const flipped = !isMobile && i % 2 === 1;
-              const plate = useReveal({ y: 50, duration: 0.72 });
               return (
-                <article key={p.slug} ref={plate.ref} style={{
-                  ...plate.style,
+                <article key={p.slug} style={{
+                  animation: `fadeUp 0.72s cubic-bezier(0.2,0.8,0.2,1) ${i * 0.1}s both`,
                   display: "grid",
                   gridTemplateColumns: isMobile ? "1fr" : flipped ? "5fr 7fr" : "7fr 5fr",
                   gap: isMobile ? 24 : 72,

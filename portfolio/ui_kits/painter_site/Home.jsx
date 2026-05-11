@@ -90,7 +90,7 @@ const Home = ({ onNavigate }) => {
             fontStyle: "italic", fontWeight: 300,
             color: "var(--dark-on-2)", maxWidth: 640, marginTop: 28,
           }}>
-            I paint to look more slowly. That is the whole of it.
+            The moment I start painting, the world outside stops rushing.
           </p>
 
           <div style={{

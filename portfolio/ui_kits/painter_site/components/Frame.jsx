@@ -43,7 +43,7 @@ const PaintingCard = ({ painting, onClick, size = "md", showTags = true }) => {
   const p = painting;
   return (
     <article style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-      <Frame src={p.thumb || p.image} alt={p.title} onClick={onClick} matted={size !== "sm"} />
+      <Frame src={p.thumb || p.image} alt={p.title} ratio="4/5" onClick={onClick} matted={size !== "sm"} />
       <div style={{ display: "flex", flexDirection: "column", gap: 4, paddingLeft: size !== "sm" ? 14 : 0 }}>
         <div style={{
           fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.22em",

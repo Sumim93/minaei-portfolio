@@ -176,49 +176,55 @@ const Series = ({ onNavigate }) => {
     <div style={{ background: "var(--paper-1)" }}>
       <style>{`@keyframes fadeUp { from { opacity:0; transform:translateY(36px); } to { opacity:1; transform:translateY(0); } }`}</style>
       <section ref={hdr.ref} style={{ ...hdr.style, padding: isMobile ? "64px 20px 48px" : "96px 48px 72px" }}>
-        <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 6vw, 5.5rem)", fontWeight: 300, letterSpacing: "-0.035em", margin: 0, lineHeight: 1.02 }}>
-          Photographs — <em style={{ fontWeight: 300 }}>the world outside the studio.</em>
-        </h1>
+        <div style={{ maxWidth: 1320, margin: "0 auto" }}>
+          <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 6vw, 5.5rem)", fontWeight: 300, letterSpacing: "-0.035em", margin: 0, lineHeight: 1.02 }}>
+            Photographs — <em style={{ fontWeight: 300 }}>the world outside the studio.</em>
+          </h1>
+        </div>
       </section>
 
       {PHOTO_SERIES.map((s, i) => {
         const cols = isMobile
           ? Math.min(s.photos.length, 2)
-          : Math.min(s.photos.length, 4);
+          : isTablet
+          ? Math.min(s.photos.length, 3)
+          : Math.min(s.photos.length, 5);
         return (
           <section key={s.slug} style={{
             animation: `fadeUp 0.65s cubic-bezier(0.2,0.8,0.2,1) ${i * 0.08}s both`,
-            padding: isMobile ? "56px 20px" : "80px 48px",
+            padding: isMobile ? "48px 20px" : "64px 48px",
             borderTop: "1px solid var(--border-soft)",
             background: i % 2 === 1 ? "var(--paper-2)" : "transparent",
           }}>
-            <div style={{ marginBottom: isMobile ? 28 : 48 }}>
-              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 3.8rem)", fontWeight: 300, fontStyle: "italic", margin: "0 0 16px", letterSpacing: "-0.025em" }}>
-                {s.title}
-              </h2>
-              <p style={{ fontFamily: "'Lora', serif", fontSize: isMobile ? 17 : 20, fontStyle: "italic", lineHeight: 1.6, color: "var(--ink-2)", margin: 0, maxWidth: 680 }}>
-                {s.description}
-              </p>
-            </div>
+            <div style={{ maxWidth: 1320, margin: "0 auto" }}>
+              <div style={{ marginBottom: isMobile ? 24 : 36 }}>
+                <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem, 3.5vw, 3rem)", fontWeight: 300, fontStyle: "italic", margin: "0 0 12px", letterSpacing: "-0.025em" }}>
+                  {s.title}
+                </h2>
+                <p style={{ fontFamily: "'Lora', serif", fontSize: isMobile ? 16 : 18, fontStyle: "italic", lineHeight: 1.6, color: "var(--ink-2)", margin: 0, maxWidth: 600 }}>
+                  {s.description}
+                </p>
+              </div>
 
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: `repeat(${cols}, 1fr)`,
-              gap: isMobile ? 10 : 16,
-              alignItems: "start",
-            }}>
-              {s.photos.map((n) => (
-                <div key={n} style={{ aspectRatio: "2/3", overflow: "hidden", cursor: "zoom-in" }}
-                  onClick={() => setLightbox(`assets/series/series-${n}.jpg`)}>
-                  <img
-                    src={`assets/series/series-${n}.jpg`}
-                    alt=""
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
-                    onMouseOver={e => e.currentTarget.style.transform = "scale(1.04)"}
-                    onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}
-                  />
-                </div>
-              ))}
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: `repeat(${cols}, 1fr)`,
+                gap: isMobile ? 8 : 12,
+                alignItems: "start",
+              }}>
+                {s.photos.map((n) => (
+                  <div key={n} style={{ aspectRatio: "2/3", overflow: "hidden", cursor: "zoom-in" }}
+                    onClick={() => setLightbox(`assets/series/series-${n}.jpg`)}>
+                    <img
+                      src={`assets/series/series-${n}.jpg`}
+                      alt=""
+                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
+                      onMouseOver={e => e.currentTarget.style.transform = "scale(1.04)"}
+                      onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
         );

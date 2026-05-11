@@ -1,5 +1,10 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/ui_kits/painter_site/index.html" }
+    { "source": "/works",           "destination": "/ui_kits/painter_site/index.html" },
+    { "source": "/about",           "destination": "/ui_kits/painter_site/index.html" },
+    { "source": "/series",          "destination": "/ui_kits/painter_site/index.html" },
+    { "source": "/contact",         "destination": "/ui_kits/painter_site/index.html" },
+    { "source": "/painting/:slug",  "destination": "/ui_kits/painter_site/index.html" },
+    { "source": "/",                "destination": "/ui_kits/painter_site/index.html" }
   ]
 }

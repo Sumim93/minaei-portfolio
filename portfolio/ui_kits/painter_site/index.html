@@ -113,29 +113,30 @@
     );
   }
 
-  // Read route from URL hash (e.g. #works, #about, #painting/candle-veil)
-  function routeFromHash() {
-    const hash = window.location.hash.slice(1); // strip leading #
-    if (!hash || hash === "home") return { page: "home", params: null };
-    if (hash.startsWith("painting/")) {
-      const slug = hash.slice("painting/".length);
+  // Read route from URL pathname (e.g. /works, /about, /painting/candle-veil)
+  function routeFromPath() {
+    const path = window.location.pathname.replace(/\/$/, "") || "/";
+    if (path === "/" || path === "") return { page: "home", params: null };
+    if (path.startsWith("/painting/")) {
+      const slug = path.slice("/painting/".length);
       const painting = (window.PAINTINGS || []).find(p => p.slug === slug) || null;
       return { page: "painting", params: painting };
     }
     const known = ["works", "about", "series", "contact"];
-    if (known.includes(hash)) return { page: hash, params: null };
+    const seg = path.slice(1); // strip leading /
+    if (known.includes(seg)) return { page: seg, params: null };
     return { page: "home", params: null };
   }
 
   function App() {
-    const [route, setRoute] = React.useState(routeFromHash);
+    const [route, setRoute] = React.useState(routeFromPath);
 
     const navigate = (page, params) => {
-      // Build hash string
-      let hash = page === "home" ? "" : page;
-      if (page === "painting" && params) hash = "painting/" + params.slug;
+      // Build real path
+      let path = page === "home" ? "/" : "/" + page;
+      if (page === "painting" && params) path = "/painting/" + params.slug;
       // Push a real browser history entry so Back works
-      window.history.pushState({ page, params }, "", "#" + hash);
+      window.history.pushState({ page, params }, "", path);
       setRoute({ page, params });
       window.scrollTo({ top: 0, behavior: "instant" });
     };
@@ -143,7 +144,7 @@
     // Handle browser Back / Forward buttons
     React.useEffect(() => {
       const onPop = (e) => {
-        const r = e.state ? e.state : routeFromHash();
+        const r = e.state ? e.state : routeFromPath();
         setRoute(r);
         window.scrollTo({ top: 0, behavior: "instant" });
       };

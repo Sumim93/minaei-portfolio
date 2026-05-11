@@ -54,9 +54,9 @@ const PaintingDetail = ({ painting, onNavigate }) => {
       {/* Hero image + info panel */}
       <section style={{ padding: isMobile ? "28px 20px 64px" : "48px 48px 80px" }}>
         <div style={{
-          maxWidth: 1100, margin: "0 auto",
+          maxWidth: 1200, margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+          gridTemplateColumns: isMobile ? "1fr" : "3fr 2fr",
           gap: isMobile ? 32 : 64,
           alignItems: "start",
         }}>

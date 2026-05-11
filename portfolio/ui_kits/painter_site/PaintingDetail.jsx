@@ -46,7 +46,7 @@ const PaintingDetail = ({ painting, onNavigate }) => {
             ← Back to Works
           </a>
           <span style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-muted)" }}>
-            {p.series}{!isMobile && <> · № {String(p.number).padStart(2, "0")}</>}
+            № {String(p.number).padStart(2, "0")}
           </span>
         </div>
       </div>

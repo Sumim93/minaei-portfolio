@@ -21,7 +21,7 @@ const PAINTINGS = [
       "assets/paintings-detail/floral-shirt-3.jpg",
     ],
     available: false,
-    note: "She had forgotten I was there. I stayed very still and painted as quietly as I could.",
+    note: "The eyes open, the mind already somewhere else. There is a particular stillness in a person who has drifted — not absence, but a quieter kind of presence.",
   },
   {
     slug: "candle-veil",
@@ -43,7 +43,7 @@ const PAINTINGS = [
       "assets/paintings-detail/candle-veil-3.jpg",
     ],
     available: false,
-    note: "A single candle, and what it chose to show. There is something in a flame that feels like hope — small, warm, and entirely uncertain.",
+    note: "A flame pulls one face from the dark and leaves everything else to shadow. Small, warm, uncertain — hope has always looked something like this.",
   },
   {
     slug: "monument-valley",
@@ -65,7 +65,7 @@ const PAINTINGS = [
       "assets/paintings-detail/monument-valley-3.jpg",
     ],
     available: false,
-    note: "Standing before those cliffs I felt the particular smallness of being placed rather than diminished. The colour of very old stone is not one colour at all.",
+    note: "Stone that has been red for a million years, indifferent and magnificent. To stand before it is not to feel small — it is to feel placed, briefly, inside something vast.",
   },
   {
     slug: "tree-on-rock",
@@ -87,7 +87,7 @@ const PAINTINGS = [
       "assets/paintings-detail/tree-on-rock-3.jpg",
     ],
     available: false,
-    note: "No shelter, no soil — just bare rock. And yet it had put itself down and stayed. I recognised something in that.",
+    note: "Bare rock, no shelter, no reason. And yet — roots, and branches, and the quiet insistence of a thing that chose to stay.",
   },
   {
     slug: "statue",
@@ -109,7 +109,7 @@ const PAINTINGS = [
       "assets/paintings-detail/statue-3.jpg",
     ],
     available: false,
-    note: "She had been standing in a museum for two hundred years, perfectly still. I wanted to find what the sculptor left for oil paint to say.",
+    note: "Two hundred years of stillness, and still something unresolved in the expression. A conversation between stone and paint, between one hand and another across centuries.",
   },
   {
     slug: "sea-wildflowers",
@@ -131,7 +131,7 @@ const PAINTINGS = [
       "assets/paintings-detail/sea-wildflowers-3.jpg",
     ],
     available: false,
-    note: "I painted this from a feeling more than a place — a day that asks nothing of you, where the flowers don't know they're beautiful.",
+    note: "A day without weight — open sky, wildflowers unaware of their own beauty, and a sea that is simply, generously, itself.",
   },
   {
     slug: "daisies-in-glass",
@@ -153,7 +153,7 @@ const PAINTINGS = [
       "assets/paintings-detail/daisies-3.jpg",
     ],
     available: false,
-    note: "They lasted three days. I spent those days noticing how the white of a daisy is never only white. Painting them was a way of keeping them.",
+    note: "Three ordinary flowers in a glass bottle — and yet, held in the right light, the white of a daisy is never only white. Some things only reveal themselves when someone stops long enough to look.",
   },
   {
     slug: "yellow-branches",
@@ -175,7 +175,7 @@ const PAINTINGS = [
       "assets/paintings-detail/yellow-branches-3.jpg",
     ],
     available: false,
-    note: "Cut just as the buds were opening — that moment before full bloom, when everything is still becoming. The yellow was almost too much. I kept it anyway.",
+    note: "Cut at the moment just before full bloom — when everything is still becoming and nothing has yet been decided. The yellow insists. It was always going to be kept.",
   },
 ];
 

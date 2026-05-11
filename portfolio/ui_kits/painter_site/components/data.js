@@ -21,7 +21,7 @@ const PAINTINGS = [
       "assets/paintings-detail/floral-shirt-3.jpg",
     ],
     available: false,
-    note: "A portrait of a woman in a floral blue dress. The moment when someone drifts into their own thoughts — a gaze that is present, but a mind that is somewhere else.",
+    note: "I've always been drawn to the moment just before someone comes back to the room — when the eyes are open but the mind has slipped somewhere private. I found that in her. She wasn't posing. She had simply forgotten I was there, and I stayed very still and painted as quietly as I could.",
   },
   {
     slug: "candle-veil",
@@ -43,7 +43,7 @@ const PAINTINGS = [
       "assets/paintings-detail/candle-veil-3.jpg",
     ],
     available: false,
-    note: "A portrait of a young girl in the warm glow of a candle. What I was after in this piece was the play of light and shadow — a small flame pulling a face out of the darkness, creating a feeling somewhere between calm and unease.",
+    note: "One evening I lit a single candle and watched what it did to the faces in the room — how it chose what to show and what to keep. I wanted to paint that choosing. There is something in a flame that feels like hope: small, warm, alive, and entirely uncertain.",
   },
   {
     slug: "monument-valley",
@@ -65,7 +65,7 @@ const PAINTINGS = [
       "assets/paintings-detail/monument-valley-3.jpg",
     ],
     available: false,
-    note: "A landscape of the red sandstone formations of Monument Valley. The vastness of these rocks and the depth of the space between them — that's what drew me in.",
+    note: "Standing in front of those cliffs I felt the particular smallness that comes not from being diminished but from being placed — the earth telling you, quietly, how long it has been here. I went home and tried to mix the exact red. It took a long time. The colour of very old stone is not one colour at all.",
   },
   {
     slug: "tree-on-rock",
@@ -87,7 +87,7 @@ const PAINTINGS = [
       "assets/paintings-detail/tree-on-rock-3.jpg",
     ],
     available: false,
-    note: "A lone tree on top of a rocky hill. Not out of necessity — as if it chose to be there and put down its roots.",
+    note: "There was no reason for it to grow there. No shelter, no soil to speak of — just bare rock at the top of a hill. And yet it had put itself down and stayed. I painted it because I recognised something in that. The stubbornness of growing in the wrong place, and doing it anyway.",
   },
   {
     slug: "statue",
@@ -109,7 +109,7 @@ const PAINTINGS = [
       "assets/paintings-detail/statue-3.jpg",
     ],
     available: false,
-    note: "A painting of a classical female bust. The precise light and shadow on the stone surface blurs the line between painting and sculpture.",
+    note: "She had been standing in a museum for two hundred years, perfectly still, and everyone who passed her was moving. I wondered what it would mean to paint something that was already a portrait — to look at a face that had already been looked at so carefully, and find something in it that the sculptor left for oil paint to say.",
   },
   {
     slug: "sea-wildflowers",
@@ -131,7 +131,7 @@ const PAINTINGS = [
       "assets/paintings-detail/sea-wildflowers-3.jpg",
     ],
     available: false,
-    note: "A coastal landscape with wildflowers in the foreground. Blue sky, white clouds and a calm sea — a simple picture of a carefree day.",
+    note: "Some days arrive without weight. The sky is doing something simple and generous, the flowers don't know they're beautiful, and the sea is just there, being the sea. I painted this from a feeling more than a place — the feeling of a day that asks nothing of you.",
   },
   {
     slug: "daisies-in-glass",
@@ -153,7 +153,7 @@ const PAINTINGS = [
       "assets/paintings-detail/daisies-3.jpg",
     ],
     available: false,
-    note: "Three daisies in a simple glass bottle. Sometimes the simplest things, when truly seen, are enough.",
+    note: "I picked them on a walk and put them in the nearest thing — a glass bottle from the kitchen. They lasted three days. I spent those three days just looking, noticing how the light passed through the water, how the stems bent, how the white of a daisy is never only white. Painting them was a way of keeping them.",
   },
   {
     slug: "yellow-branches",
@@ -175,7 +175,7 @@ const PAINTINGS = [
       "assets/paintings-detail/yellow-branches-3.jpg",
     ],
     available: false,
-    note: "A still life of yellow-budded branches in an earthenware vase. The warmth of yellow against the cool background — two different moods in one frame.",
+    note: "They were cut from a tree in the garden just as the buds were opening — that precise moment before full bloom, when everything is still becoming. I've always felt more moved by beginnings than by arrival. The yellow was almost too much. I kept it anyway.",
   },
 ];
 

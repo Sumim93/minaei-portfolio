@@ -113,13 +113,45 @@
     );
   }
 
+  // Read route from URL hash (e.g. #works, #about, #painting/candle-veil)
+  function routeFromHash() {
+    const hash = window.location.hash.slice(1); // strip leading #
+    if (!hash || hash === "home") return { page: "home", params: null };
+    if (hash.startsWith("painting/")) {
+      const slug = hash.slice("painting/".length);
+      const painting = (window.PAINTINGS || []).find(p => p.slug === slug) || null;
+      return { page: "painting", params: painting };
+    }
+    const known = ["works", "about", "series", "contact"];
+    if (known.includes(hash)) return { page: hash, params: null };
+    return { page: "home", params: null };
+  }
+
   function App() {
-    const [route, setRoute] = React.useState({ page: "home", params: null });
+    const [route, setRoute] = React.useState(routeFromHash);
 
     const navigate = (page, params) => {
+      // Build hash string
+      let hash = page === "home" ? "" : page;
+      if (page === "painting" && params) hash = "painting/" + params.slug;
+      // Push a real browser history entry so Back works
+      window.history.pushState({ page, params }, "", "#" + hash);
       setRoute({ page, params });
       window.scrollTo({ top: 0, behavior: "instant" });
     };
+
+    // Handle browser Back / Forward buttons
+    React.useEffect(() => {
+      const onPop = (e) => {
+        const r = e.state ? e.state : routeFromHash();
+        setRoute(r);
+        window.scrollTo({ top: 0, behavior: "instant" });
+      };
+      window.addEventListener("popstate", onPop);
+      // Stamp the initial history entry so Back from page 1 works correctly
+      window.history.replaceState(route, "", window.location.href);
+      return () => window.removeEventListener("popstate", onPop);
+    }, []);
 
     const page = route.page;
     const navKey = page === "home" ? "" :

@@ -27,11 +27,27 @@ const PaintingDetail = ({ painting, onNavigate }) => {
 
       {/* Breadcrumb */}
       <div style={{ padding: `28px ${px} 0` }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-muted)" }}>
-          <a href="/works" onClick={e => { e.preventDefault(); onNavigate("works"); }} style={{ color: "inherit", textDecoration: "none" }}>← Works</a>
-          <span style={{ margin: "0 14px" }}>·</span>
-          <span>{p.series}</span>
-          {!isMobile && <><span style={{ margin: "0 14px" }}>·</span><span>№ {String(p.number).padStart(2, "0")}</span></>}
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", gap: 16 }}>
+          <a
+            href="/works"
+            onClick={e => { e.preventDefault(); onNavigate("works"); }}
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 7,
+              fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase",
+              color: "var(--ink-1)", textDecoration: "none",
+              background: "var(--paper-2)",
+              border: "1px solid var(--border)",
+              padding: "9px 18px", borderRadius: 999,
+              transition: "background 0.18s ease, border-color 0.18s ease",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = "var(--ink-1)"; e.currentTarget.style.color = "var(--paper-0)"; e.currentTarget.style.borderColor = "var(--ink-1)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "var(--paper-2)"; e.currentTarget.style.color = "var(--ink-1)"; e.currentTarget.style.borderColor = "var(--border)"; }}
+          >
+            ← Back to Works
+          </a>
+          <span style={{ fontFamily: "var(--font-ui)", fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--fg-muted)" }}>
+            {p.series}{!isMobile && <> · № {String(p.number).padStart(2, "0")}</>}
+          </span>
         </div>
       </div>
 

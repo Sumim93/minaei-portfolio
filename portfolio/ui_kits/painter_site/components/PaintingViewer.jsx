@@ -176,6 +176,7 @@ const PaintingViewer = ({ painting, onClose }) => {
 
   const onPointerDown = (e) => {
     if (e.target.closest("[data-ui]")) return;
+    if (e.pointerType === "mouse" && e.button !== 0) return;
     e.currentTarget.setPointerCapture(e.pointerId);
     pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
     setHint(false);
@@ -210,7 +211,20 @@ const PaintingViewer = ({ painting, onClose }) => {
     if (!pointers.current.has(e.pointerId)) return;
     pointers.current.delete(e.pointerId);
     const pr = press.current;
-    if (!cancelled && pointers.current.size === 0 && pr && !pr.moved && Date.now() - pr.t < 300) {
+    if (!cancelled && e.pointerType === "mouse" && pointers.current.size === 0 && pr && !pr.moved && Date.now() - pr.t < 500) {
+      // Mouse click: zoom in where clicked. Alt/Shift-click, or a click at
+      // maximum zoom, steps back out.
+      const pt = toLocal(e.clientX, e.clientY);
+      const s = viewRef.current.s;
+      if (e.altKey || e.shiftKey) {
+        if (s > 1.001) zoomAt(s / 2, pt.x, pt.y, true);
+      } else if (s >= maxScale - 0.01) {
+        fit();
+      } else {
+        zoomAt(s > 1.001 ? s * 2 : 2.5, pt.x, pt.y, true);
+      }
+    } else if (!cancelled && pointers.current.size === 0 && pr && !pr.moved && Date.now() - pr.t < 300) {
+      // Touch: double-tap toggles zoom
       const now = Date.now();
       const lt = lastTap.current;
       if (now - lt.t < 320 && Math.hypot(e.clientX - lt.x, e.clientY - lt.y) < 30) {
@@ -228,7 +242,8 @@ const PaintingViewer = ({ painting, onClose }) => {
 
   // ── UI ────────────────────────────────────────────────────────────────
   const zoomed = view.s > 1.001;
-  const cursor = zoomed ? (dragging ? "grabbing" : "grab") : "zoom-in";
+  const atMax = view.s >= maxScale - 0.01;
+  const cursor = dragging ? "grabbing" : atMax ? "zoom-out" : "zoom-in";
   const mb = (n) => (n / 1048576).toFixed(1);
   const pct = progress.total ? Math.round((progress.loaded / progress.total) * 100) : 0;
 
@@ -379,7 +394,7 @@ const PaintingViewer = ({ painting, onClose }) => {
         color: "var(--dark-on-1)", whiteSpace: "nowrap",
         opacity: hint ? 1 : 0, transition: "opacity 0.6s ease",
       }}>
-        {isMobile ? "Pinch or double-tap to zoom" : "Scroll or double-click to zoom · drag to explore"}
+        {isMobile ? "Pinch or double-tap to zoom" : "Click or scroll to zoom · drag to explore"}
       </div>
     </div>
   );

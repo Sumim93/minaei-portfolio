@@ -1,3 +1,9 @@
 .DS_Store
 Thumbs.db
 *.log
+
+# Master photos stay on local disks only (the GitHub repo is public)
+Originals/
+
+# Temporary working copies made by Claude Code
+.claude/worktrees/

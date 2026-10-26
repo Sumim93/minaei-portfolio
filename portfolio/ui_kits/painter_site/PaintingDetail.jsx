@@ -61,7 +61,7 @@ const PaintingDetail = ({ painting, onNavigate }) => {
           alignItems: "start",
         }}>
           <div ref={heroImg.ref} style={heroImg.style}>
-            <Frame src={p.image} alt={p.title} onClick={() => setZoomed(true)} />
+            <Frame src={p.hero || p.image} alt={p.title} onClick={() => setZoomed(true)} />
           </div>
 
           <div ref={heroInfo.ref} style={{

@@ -216,8 +216,9 @@ const Series = ({ onNavigate }) => {
                   <div key={n} style={{ aspectRatio: "2/3", overflow: "hidden", cursor: "zoom-in" }}
                     onClick={() => setLightbox(`assets/series/series-${n}.jpg`)}>
                     <img
-                      src={`assets/series/series-${n}.jpg`}
+                      src={`assets/series-web/series-${n}.jpg`}
                       alt=""
+                      loading="lazy"
                       style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease" }}
                       onMouseOver={e => e.currentTarget.style.transform = "scale(1.04)"}
                       onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}

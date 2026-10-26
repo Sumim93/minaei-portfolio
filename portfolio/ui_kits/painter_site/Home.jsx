@@ -180,7 +180,7 @@ const Home = ({ onNavigate }) => {
                   alignItems: "center",
                 }}>
                   <div style={{ order: flipped ? 2 : 1 }}>
-                    <Frame src={p.image} alt={p.title} onClick={() => onNavigate("painting", p)} />
+                    <Frame src={p.hero || p.image} alt={p.title} onClick={() => onNavigate("painting", p)} />
                   </div>
                   <div style={{ order: flipped ? 1 : 2, paddingTop: isMobile ? 0 : 20 }}>
                     <div style={{

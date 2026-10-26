@@ -93,6 +93,7 @@
 <script type="text/babel" src="components/Footer.jsx"></script>
 <script type="text/babel" src="Home.jsx"></script>
 <script type="text/babel" src="Gallery.jsx"></script>
+<script type="text/babel" src="components/PaintingViewer.jsx"></script>
 <script type="text/babel" src="PaintingDetail.jsx"></script>
 <script type="text/babel" src="About.jsx"></script>
 <script type="text/babel" src="Contact.jsx"></script>
@@ -130,6 +131,8 @@
 
   function App() {
     const [route, setRoute] = React.useState(routeFromPath);
+    const routeRef = React.useRef(route);
+    routeRef.current = route;
 
     const navigate = (page, params) => {
       // Build real path
@@ -145,8 +148,12 @@
     React.useEffect(() => {
       const onPop = (e) => {
         const r = e.state ? e.state : routeFromPath();
+        const cur = routeRef.current;
+        const samePage = r.page === cur.page &&
+          (r.params && r.params.slug) === (cur.params && cur.params.slug);
         setRoute(r);
-        window.scrollTo({ top: 0, behavior: "instant" });
+        // Closing the painting viewer via Back stays on the same page — keep scroll
+        if (!samePage) window.scrollTo({ top: 0, behavior: "instant" });
       };
       window.addEventListener("popstate", onPop);
       // Stamp the initial history entry so Back from page 1 works correctly

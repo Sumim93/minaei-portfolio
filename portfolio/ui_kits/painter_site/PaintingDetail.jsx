@@ -14,6 +14,22 @@ const PaintingDetail = ({ painting, onNavigate }) => {
   const brushRef = useReveal({ y: 32, duration: 0.7 });
   const navRef   = useReveal({ y: 0,  duration: 0.5 });
 
+  // Full-resolution viewer gets its own history entry so the browser Back
+  // button closes it instead of leaving the painting page.
+  const openViewer = () => {
+    window.history.pushState({ ...(window.history.state || {}), viewer: true }, "", window.location.href);
+    setZoomed(true);
+  };
+  const closeViewer = () => {
+    if (window.history.state && window.history.state.viewer) window.history.back();
+    else setZoomed(false);
+  };
+  React.useEffect(() => {
+    const onPop = () => setZoomed(false);
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+
   // Slide info from right on desktop
   const infoStyle = {
     ...heroInfo.style,
@@ -61,7 +77,7 @@ const PaintingDetail = ({ painting, onNavigate }) => {
           alignItems: "start",
         }}>
           <div ref={heroImg.ref} style={heroImg.style}>
-            <Frame src={p.hero || p.image} alt={p.title} onClick={() => setZoomed(true)} />
+            <Frame src={p.hero || p.image} alt={p.title} onClick={openViewer} />
           </div>
 
           <div ref={heroInfo.ref} style={{
@@ -94,7 +110,7 @@ const PaintingDetail = ({ painting, onNavigate }) => {
             </dl>
 
             <div style={{ marginTop: 32 }}>
-              <Button variant="ghost" onClick={() => setZoomed(true)}>View full painting ↗</Button>
+              <Button variant="ghost" onClick={openViewer}>View in full resolution ↗</Button>
             </div>
           </div>
         </div>
@@ -165,22 +181,8 @@ const PaintingDetail = ({ painting, onNavigate }) => {
         </div>
       </section>
 
-      {/* Lightbox */}
-      {zoomed && (
-        <div onClick={() => setZoomed(false)} style={{
-          position: "fixed", inset: 0, background: "rgba(20,17,13,0.94)", zIndex: 200,
-          display: "flex", alignItems: "center", justifyContent: "center", padding: isMobile ? 16 : 48,
-          cursor: "zoom-out", backdropFilter: "blur(8px)",
-        }}>
-          <img src={p.image} alt={p.title} style={{ maxWidth: "92%", maxHeight: "88vh", objectFit: "contain", boxShadow: "0 40px 80px rgba(0,0,0,0.5)" }}/>
-          <button onClick={e => { e.stopPropagation(); setZoomed(false); }} style={{
-            position: "absolute", top: 24, right: 24, background: "transparent", border: 0, color: "var(--dark-on-1)", cursor: "pointer",
-          }}><Icon name="close" size={28}/></button>
-          <div style={{ position: "absolute", bottom: 24, left: 0, right: 0, textAlign: "center", color: "var(--dark-on-2)", fontFamily: "'Lora', serif", fontStyle: "italic", fontSize: 15 }}>
-            {p.title}, {p.year} · {p.dimensions}
-          </div>
-        </div>
-      )}
+      {/* Full-resolution viewer */}
+      {zoomed && <PaintingViewer key={p.slug} painting={p} onClose={closeViewer} />}
     </div>
   );
 };
